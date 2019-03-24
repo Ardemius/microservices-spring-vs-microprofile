@@ -1,0 +1,3 @@
+= Microservices : Infinity War ! Spring vs MicroProfile
+
+Talk présenté à Devoxx France 2019
