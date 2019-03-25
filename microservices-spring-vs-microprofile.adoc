@@ -175,6 +175,7 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 	Can KumuluzEE be a competitor for the Spring Cloud framework? He is certainly not as popular and advanced in the solutions for microservices like Spring Cloud, but has basic modules for service registration, discovery, distributed configuration propagation, circuit breaking, metrics and support for Docker and Kubernetes. It uses CDI on JBoss Weld container for dependency injection and Jersey as a REST API provider. Modules for configuration and discovery basing on Consul or etcd and they are rather on early stage of development (1.0.0-SNAPSHOT), but let’s try it out.
 	----
 	** RAHHHH, Istio Istio Istio qui semble être une solution de plus en plus préco pour MP : https://www.eclipse.org/community/eclipse_newsletter/2018/september/MicroProfile_istio.php (en plus un article récent !) -> *A LIRE ABSOLUMENT !!!!*
+	** l'eBook "Building Microservices with Enterprise Java: A Practical Guide to Eclipse MicroProfile" http://bit.ly/MP-ebook, 62 pages 2018/10, A REGARDER
 
 * Comparaison entre Spring Boot / Cloud et MicroProfile :
 	** https://www.ibm.com/blogs/bluemix/2018/09/migrate-java-microservices-from-spring-to-microprofile-p1/ : en fait, bien chercher dans les "how-tos" d'IBM qui a migré de Spring à MicroProfile sa stack Microservices. +
@@ -357,6 +358,9 @@ Bonne ressources à exploiter : https://developers.redhat.com/blog/2018/11/21/ec
 
 * Etudier les possibilités de "mixer / mélanger" les 2 stacks
 * Parler (rapidement) des possibilités d'implémenter ses microservices "à la main", sans framework tierce
+
+On vous a parlé de création de microservices avec stack Spring et MicroProfile, mais d'autres solutions sont possibles, comme l'usage d'Istio. +
+Rentrer dans le détail serait l'objet d'une présentation à part, mais on peut rapidement en dire ceci : DEVELOPPER RAPIDEMENT
 
 === L'avenir
 
