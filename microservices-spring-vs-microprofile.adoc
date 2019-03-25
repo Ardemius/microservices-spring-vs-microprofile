@@ -351,14 +351,27 @@ Parler de Thorntail (anciennement Wildfly Swarm), Open Liberty, Payara, TomEE et
 
 === Live Demo
 
+Bonne ressources à exploiter : https://developers.redhat.com/blog/2018/11/21/eclipse-microprofile-for-spring-boot-developers/
+
+=== Conclusion de la demo
+
+* Etudier les possibilités de "mixer / mélanger" les 2 stacks
+* Parler (rapidement) des possibilités d'implémenter ses microservices "à la main", sans framework tierce
+
 === L'avenir
 
 * gRPC poussé par l'omniprésence de Kubernetes, la caractéristique HTTP / REST / JSON des microservices va peut-être (sûrement ?) évoluer
 * Netflix arrête le support de sa stack OSS pour supporter les outils Spring issus du fork de cette dernière (à checker, voir les Cast Codeurs 204)
 
-=== Dans l'absolu
+== Dans l'absolu
 
-Plutôt vers le début, on pourrait parler un peu de la *décomposition du problème métier*, et donc du DDD 
+* Plutôt vers le début, on pourrait parler un peu de la *décomposition du problème métier*, et donc du DDD 
 
+* "Comme son titre l'annonce, cette présentation a pour but de comparer les stacks Spring, avec Boot et Cloud, et MicroProfile pour le développement d'une application basée sur une architecture microservices +
+Donc, avant d'aller plus loin, commençons par rappelez ce qu'on entend exactement par architecture microservices."
+* "Rapide sondage : qui a déjà utilisé ou utilise des microservices dans son projet ?"
+	** Parmi celles et ceux qui ont répondu "oui", vos microservices reposent-ils principalement sur une stack Spring ?
+	** une stack MicroProfile ?
+	** ou aucune des 2, et vous faites tout à la main !!!! (réfléchir à la pertinence de la question)
 
 
