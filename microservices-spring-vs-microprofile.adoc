@@ -339,6 +339,13 @@ Définition d'Alistair COCKBURN + reminder p13
 
 ap19 - 20 : les principales caractéristiques
 
+Bien parler de la communication entre microservices : 
+
+* synchrone : tight coupling, REST calls
+* asynchrone : Rabbit / Kafka, loose coupling
+
+-> pour ce point, voir https://dzone.com/articles/how-are-your-microservices-talking, qui repropose également une def des microservices
+
 === L'environnement autour des microservices (API Gateway, service discovery, fail-fast, etc.)
 
 === Présentation de Sprint Boot et Cloud
