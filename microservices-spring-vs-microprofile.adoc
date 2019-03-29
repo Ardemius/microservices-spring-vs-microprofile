@@ -184,6 +184,8 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 	-> Article très récent, 21/11/2018 +
 	-> *Attention*, cela ne couvre PAS l'environnement technique adjacent (API gateway, service discovery, etc.)
 
+	** *A lire absolument* (mars 2019, viens de sortir) : https://dzone.com/articles/programming-styles-spring-boot-vis-a-vis-with-ecli
+
 * Cast Codeurs 204, sur Netflix qui abandonne le développement de sa stack OSS au profit du fork que Spring a réalisé dessus ("eureka" remplacé par "spring-eureka", à revérifier)
 * 12@13 d'Antonio GONCALVES sur l'architecture microservices
 * RefCardz Spring Boot et microservices
