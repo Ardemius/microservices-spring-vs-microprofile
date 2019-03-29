@@ -339,10 +339,11 @@ Définition d'Alistair COCKBURN + reminder p13
 
 ap19 - 20 : les principales caractéristiques
 
-Bien parler de la communication entre microservices : 
+Bien parler de la *communication entre microservices* : 
 
 * synchrone : tight coupling, REST calls
-* asynchrone : Rabbit / Kafka, loose coupling
+* *asynchrone* : Rabbit / Kafka, loose coupling +
+C'est bien ce type de comm qui est préconisé la plupart du temps pour les microservices -> CHECKER QU'ON L'INTEGRE BIEN DANS LA DEMO
 
 -> pour ce point, voir https://dzone.com/articles/how-are-your-microservices-talking, qui repropose également une def des microservices
 
@@ -351,6 +352,8 @@ Bien parler de la communication entre microservices :
 === Présentation de Sprint Boot et Cloud
 
 Cf l1 p34 : définition de Spring Boot et Cloud
+
+Refcardz DZone : Spring boot pas d'app server comparé à JEE classique : "Specifically, Spring Boot is concerned with building "bootable" applications that can boot up on bare metal or virtualized infrastructure without any elaborate ecosystem such as application servers or web containers".
 
 === Présentation de Microprofile
 
