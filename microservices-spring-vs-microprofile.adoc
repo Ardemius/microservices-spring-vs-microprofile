@@ -363,6 +363,8 @@ C'est bien ce type de comm qui est préconisé la plupart du temps pour les micr
 
 === L'environnement autour des microservices (API Gateway, service discovery, fail-fast, etc.)
 
+* Hystrix et, de plus en plus, ses remplaçants : l'abandon d'#Hystrix au profit de #Resilience4j et #AdaptiveConcurrencyLimits (cf Fabrice Volkaert @volkaert)
+
 === Présentation de Sprint Boot et Cloud
 
 Cf l1 p34 : définition de Spring Boot et Cloud
@@ -391,7 +393,8 @@ Pour un bon schéma de ce qu'est un service mesh, cf "For a Future Microservices
 === L'avenir
 
 * gRPC poussé par l'omniprésence de Kubernetes, la caractéristique HTTP / REST / JSON des microservices va peut-être (sûrement ?) évoluer
-	** voir également ce que pourrait donner GraphQL à la place de REST à ce sujet (voir le blog d'Octo https://blog.octo.com/graphql-et-pourquoi-faire/)
+	** voir également ce que pourrait donner GraphQL à la place de REST à ce sujet. Voir le blog d'Octo https://blog.octo.com/graphql-et-pourquoi-faire/, le plus important :
+	"*L’optimisation des requêtes* ainsi que *l’optimisation des données réseaux* sont à mon sens les deux avantages majeurs de GraphQL à l’état de l’art."
 * Netflix arrête le support de sa stack OSS pour supporter les outils Spring issus du fork de cette dernière (à checker, voir les Cast Codeurs 204)
 
 == Dans l'absolu
