@@ -191,7 +191,47 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 	** Pour une comparaison de 2 jours de workshops (plan de formation Oxiane) pour bâtir une application microservices, l'un avec MicroProfile, l'autre avec Spring, voir : https://www.oxiane.com/voxxeddays-microservices/ +
 	TRES SYMPA POUR AVOIR *UN LISTING DE TECHNO CLASSÉ PAR CATÉGORIE* :
 		**** (WS2) Microservices en Java (Spring) : https://www.oxiane.com/wp-content/uploads/2018/06/Voxxed-Microservices-2018-Programme-Formation-WS2-Spring-Cloud.pdf
+
+			----
+			Architecture microservices
+
+			Gateway (Zuul, Traefik)
+			Registry et service discovery (Eureka, Consul et Istio)
+			Monitoring (stack Elastic, Prometheus)
+			Cache distribué (Hazelcast, Ehcache, Infinispan, Memcached)
+			Sécurité avec Spring Security (et un détail des modifications/améliorations proposées par JHipster)
+
+			Développement de plusieurs microservices
+
+			Spring Boot et Spring Cloud pour démarrer rapidement une gateway et des microservices
+			Netflix Eureka ou Consul pour gérer l’annuaire de services
+			Spring Cloud Config pour configurer l’ensemble de l’architecture
+			Sécurité JWT ou OAuth2 (avec Keycloak)
+			API gateway avec Zuul
+			Monitoring avec la stack Elastic
+			Docker pour tester facilement l’ensemble de l’architecture localement, et pour passer en production
+			----
+
 		**** (WS1) Microservices en Java (Java EE) : https://www.oxiane.com/wp-content/uploads/2018/06/Voxxed-Microservices-2018-Programme-Formation-WS1-Jakarta-EE.pdf 
+
+			----
+			Architecture microservices
+
+			Registry et service discovery (Config, OPen API, Consul)
+			Scalabilité (Fault Tolerance)
+			Monitoring (Open Tracing + Metrics + Health Check)
+			Sécurité (JWT + JWT Propagation)
+
+			Développement de plusieurs microservices
+
+			Services REST (JAX-RS + CDI)
+			Parsing JSON (JSON-P + JSON-B)
+			Consul pour gérer l’annuaire de services
+			Config pour configurer l’ensemble de l’architecture
+			Sécurité JWT et propagation des tokens JWT
+			Monitoring
+			Docker pour tester facilement l’ensemble de l’architecture localement, et pour passer en production
+			----
 
 	** *A lire absolument* (mars 2019, viens de sortir) : https://dzone.com/articles/programming-styles-spring-boot-vis-a-vis-with-ecli et sa suite https://dzone.com/articles/programming-styles-compared-spring-framework-vis-a
 
@@ -416,7 +456,8 @@ Pour un bon schéma de ce qu'est un service mesh, cf "For a Future Microservices
 
 === L'avenir
 
-* gRPC poussé par l'omniprésence de Kubernetes, la caractéristique HTTP / REST / JSON des microservices va peut-être (sûrement ?) évoluer
+* gRPC poussé par l'omniprésence de Kubernetes, la caractéristique HTTP / REST / JSON des microservices va peut-être (sûrement ?) évoluer +
+-> voir la vidéo "Intro to gRPC: A Modern Toolkit for Microservice Communication" (https://www.youtube.com/watch?v=RoXT_Rkg8LA)
 	** voir également ce que pourrait donner GraphQL à la place de REST à ce sujet. Voir le blog d'Octo https://blog.octo.com/graphql-et-pourquoi-faire/, le plus important :
 	"*L’optimisation des requêtes* ainsi que *l’optimisation des données réseaux* sont à mon sens les deux avantages majeurs de GraphQL à l’état de l’art."
 * Netflix arrête le support de sa stack OSS pour supporter les outils Spring issus du fork de cette dernière (à checker, voir les Cast Codeurs 204)
@@ -455,6 +496,7 @@ ON PLACE LES 15 20 min de pause ICI !
 4. Passage à la pratique et demo
 	** Présentation de la stack Spring Boot et Cloud
 	** Présentation de la stack Microprofile -> ON PART SUR *OPEN LIBERTY*
+		**** présenter les principales implémentations de la spec MicroProfile (et donner la dernière version actuelle !)
 	** Présentation exhaustive des technos que nous avons choisies pour les 2 stacks 
 5. Conclusion : récapitulatif des points communs / différences entre les 2 stacks
 6. On se projette dans l'avenir...
