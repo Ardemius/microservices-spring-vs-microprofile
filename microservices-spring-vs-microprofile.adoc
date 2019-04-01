@@ -56,7 +56,7 @@ il faudrait essayer de garder une trame commune, pour faciliter la comparaison
 ** Circuit Breaker
 	**** bulkheads
 	**** fallbacks
-** Centralised configuration (?)
+** Centralised configuration
 ** monitoring and logging
 ** security
 
@@ -426,5 +426,41 @@ Donc, avant d'aller plus loin, commençons par rappelez ce qu'on entend exacteme
 	** Parmi celles et ceux qui ont répondu "oui", vos microservices reposent-ils principalement sur une stack Spring ?
 	** une stack MicroProfile ?
 	** ou aucune des 2, et vous faites tout à la main !!!! (réfléchir à la pertinence de la question)
+
+== PLAN au 01/04/2019
+
+1. rapide définition de ce qu'est un microservice et un peu d'histoire
+2. le "core" des microservices
+3. puis tout l'environnement qui gravite autour. On va y distinguer :
+	** API Gateway
+	** Service Discovery
+	** Load Balancer
+	** Design for failure
+		**** Circuit Breaker
+		**** bulkheads
+		**** fallbacks
+	** Centralised configuration
+	** monitoring and logging
+	** security
+-> bien faire une présentation *AGNOSTIQUE à la techno* à ce niveau. +
+Faire un schéma global sur la modèle de celui de Susane KAISER lors du Voxxed Days microservices 2018
+
+ON PLACE LES 15 20 min de pause ICI ! 
+
+4. Passage à la pratique et demo
+	** Présentation de la stack Spring Boot et Cloud
+	** Présentation de la stack Microprofile
+	** Présentation exhaustive des technos que nous avons choisies pour les 2 stacks 
+5. Conclusion : récapitulatif des points communs / différences entre les 2 stacks
+6. On se projette dans l'avenir...
+	** les protocoles de communications : gRPC poussé par Kubernetes, et GraphQL
+	** "l'autre combattant" Kubernetes (avec le service mesh Istio)
+7. On réserve 10 min pour les questions
+
+-> Au total, ~2h30 de présentation (slides et demo)
+
+
+
+
 
 
