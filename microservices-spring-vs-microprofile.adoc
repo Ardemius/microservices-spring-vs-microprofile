@@ -177,16 +177,21 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 	** RAHHHH, Istio Istio Istio qui semble être une solution de plus en plus préco pour MP : https://www.eclipse.org/community/eclipse_newsletter/2018/september/MicroProfile_istio.php (en plus un article récent !) -> *A LIRE ABSOLUMENT !!!!*
 	** l'eBook "Building Microservices with Enterprise Java: A Practical Guide to Eclipse MicroProfile" http://bit.ly/MP-ebook, 62 pages 2018/10, A REGARDER
 
-* Comparaison entre Spring Boot / Cloud et MicroProfile :
+* *Comparaison entre Spring Boot / Cloud et MicroProfile* :
+
 	** https://www.ibm.com/blogs/bluemix/2018/09/migrate-java-microservices-from-spring-to-microprofile-p1/ : en fait, bien chercher dans les "how-tos" d'IBM qui a migré de Spring à MicroProfile sa stack Microservices. +
 	Le seul "hic" est qu'il faut chercher dans les différents how-to les articles associés à cette migration. Mais, ceci mis à part, c'est une très bonne ressource.
+
 	** Pour la partie vraiment "core" du dev des microservices : https://developers.redhat.com/blog/2018/11/21/eclipse-microprofile-for-spring-boot-developers/ +
 	-> Article très récent, 21/11/2018 +
 	-> *Attention*, cela ne couvre PAS l'environnement technique adjacent (API gateway, service discovery, etc.)
 
 	** Pour une comparaison du Health check, voir https://medium.com/ibm-cloud/java-microservices-with-microprofile-health-check-and-metrics-cd70cf529626
 
-	** Pour une comparaison de 2 jours de workshops pour bâtir une application microservices, l'un avec MicroProfile, l'autre avec Spring, voir : https://www.oxiane.com/voxxeddays-microservices/
+	** Pour une comparaison de 2 jours de workshops (plan de formation Oxiane) pour bâtir une application microservices, l'un avec MicroProfile, l'autre avec Spring, voir : https://www.oxiane.com/voxxeddays-microservices/ +
+	TRES SYMPA POUR AVOIR *UN LISTING DE TECHNO CLASSÉ PAR CATÉGORIE* :
+		**** (WS2) Microservices en Java (Spring) : https://www.oxiane.com/wp-content/uploads/2018/06/Voxxed-Microservices-2018-Programme-Formation-WS2-Spring-Cloud.pdf
+		**** (WS1) Microservices en Java (Java EE) : https://www.oxiane.com/wp-content/uploads/2018/06/Voxxed-Microservices-2018-Programme-Formation-WS1-Jakarta-EE.pdf 
 
 	** *A lire absolument* (mars 2019, viens de sortir) : https://dzone.com/articles/programming-styles-spring-boot-vis-a-vis-with-ecli et sa suite https://dzone.com/articles/programming-styles-compared-spring-framework-vis-a
 
@@ -449,7 +454,7 @@ ON PLACE LES 15 20 min de pause ICI !
 
 4. Passage à la pratique et demo
 	** Présentation de la stack Spring Boot et Cloud
-	** Présentation de la stack Microprofile
+	** Présentation de la stack Microprofile -> ON PART SUR *OPEN LIBERTY*
 	** Présentation exhaustive des technos que nous avons choisies pour les 2 stacks 
 5. Conclusion : récapitulatif des points communs / différences entre les 2 stacks
 6. On se projette dans l'avenir...
