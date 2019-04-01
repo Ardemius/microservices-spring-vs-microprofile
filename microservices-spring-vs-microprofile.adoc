@@ -184,11 +184,13 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 	-> Article très récent, 21/11/2018 +
 	-> *Attention*, cela ne couvre PAS l'environnement technique adjacent (API gateway, service discovery, etc.)
 
-	** *A lire absolument* (mars 2019, viens de sortir) : https://dzone.com/articles/programming-styles-spring-boot-vis-a-vis-with-ecli
+	** *A lire absolument* (mars 2019, viens de sortir) : https://dzone.com/articles/programming-styles-spring-boot-vis-a-vis-with-ecli et sa suite https://dzone.com/articles/programming-styles-compared-spring-framework-vis-a
 
 * Cast Codeurs 204, sur Netflix qui abandonne le développement de sa stack OSS au profit du fork que Spring a réalisé dessus ("eureka" remplacé par "spring-eureka", à revérifier)
 * 12@13 d'Antonio GONCALVES sur l'architecture microservices
 * RefCardz Spring Boot et microservices
+
+* repo de Darren : https://gitlab.com/darren.boutros/devoxx-2019/tree/find_Mission/Spring-Cloud/mission/src/main
 
 === Reminders
 
@@ -380,7 +382,18 @@ Parler de Thorntail (anciennement Wildfly Swarm), Open Liberty, Payara, TomEE et
 
 === Live Demo
 
+* On commence par une rapide présentation de ce que va faire la démo
+
 Bonne ressources à exploiter : https://developers.redhat.com/blog/2018/11/21/eclipse-microprofile-for-spring-boot-developers/
+
+* IL VA FALLOIR UN PETIT DIAGRAMME DE CLASSE (diagramme d'archi) DE LA DEMO
+* et lister les techno utilisées pour chaque stack
+
+* Bien découper la démo, élément (classe) par élément dont on présentera l'implémentation successivement, en comparant systématiquement les stacks Spring et MicroProfile 
+	** trouver un moyen simple d'afficher à l'écran, pour un même élément, les codes Spring et MicroProfile (via l'IDE ? 2 workspaces / projects en parallèle ?)
+	** voir si on intègre un peu de code dans les slides
+
+-> DANS TOUS LES CAS, venir le jour J avec plusieurs backups du code source COMPLET
 
 === Conclusion de la demo
 
