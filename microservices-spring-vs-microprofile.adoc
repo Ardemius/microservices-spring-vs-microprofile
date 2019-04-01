@@ -44,6 +44,8 @@ Dans notre plan de prez, on pourrait rappeler les différents composants d'une s
 il faudrait se débrouiller pour faire nos exemples Microprofiles et Spring Boot avec les mêmes outils en commun (quand possible biensûr) +
 il faudrait essayer de garder une trame commune, pour faciliter la comparaison
 
+On pourrait toucher 2 mots des 12 factor app ?
+
 == Plan de la présentation
 
 * Refaire un rien d'histoire *très rapide* sur les microservices (définition d'A. Cockburn, applications cloud native, qualité de service et fonctionnalités attendues, etc.)
@@ -312,6 +314,12 @@ Q3: How do I handle application service registry and discovery?
 To benefit from the many Microservices you create in a distributed, elastic cloud environment, a proper service registration and discovery strategy is critical to allow them to communicate with each other or to be consumed. As a pioneer in cloud-native Microservices implementation, Netflix has built and released a set of opinionated libraries known as Netflix OSS, such as Eureka, Zuul, Ribbon, etc. And they are well integrated with the Spring framework. Typically, services are registered to Eureka, and Ribbon/Zuul handle the service discovery and basic load-balancing. However, what I describe was nearly 5 years ago.
 
 Today, Kubernetes natively supports service registry, discovery and load balancing. You no longer need Netflix OSS for these tasks. Instead, you design the system the Kubernetes way. You can leverage Kubernetes’ Service type to expose your Microservices, then it automatically registered into Kubernetes system via virtual IP or DNS approach (I’ll elaborate on this decision in the next question/answer). The discovery will be through the familiar DNS lookup style. For Service-based clusters, Kubernetes provides a built-in load balancer to distribute the workload among Pods (containers).
+----
+
+Voir également https://www.ibm.com/blogs/bluemix/2018/09/migrate-java-microservices-from-spring-to-microprofile-p1/ :
+
+----
+However, the move to Kubernetes mostly obfuscated the need for Spring Cloud capabilities, as most of our microservice capabilities were supported out of the box by Kubernetes (with some minor exceptions like Hystrix fault tolerance support).
 ----
 
 == Teaser et abstract
