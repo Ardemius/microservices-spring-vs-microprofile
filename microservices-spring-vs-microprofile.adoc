@@ -181,8 +181,9 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 
 * *Comparaison entre Spring Boot / Cloud et MicroProfile* :
 
-	** https://www.ibm.com/blogs/bluemix/2018/09/migrate-java-microservices-from-spring-to-microprofile-p1/ : en fait, bien chercher dans les "how-tos" d'IBM qui a migré de Spring à MicroProfile sa stack Microservices. +
-	Le seul "hic" est qu'il faut chercher dans les différents how-to les articles associés à cette migration. Mais, ceci mis à part, c'est une très bonne ressource.
+	** https://www.ibm.com/blogs/bluemix/2018/09/migrate-java-microservices-from-spring-to-microprofile-p1/ : Très bonne ressource
+		**** code source avec Spring : https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes/tree/spring
+		**** code source avec MicroProfile : https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes/tree/microprofile
 
 	** Pour la partie vraiment "core" du dev des microservices : https://developers.redhat.com/blog/2018/11/21/eclipse-microprofile-for-spring-boot-developers/ +
 	-> Article très récent, 21/11/2018 +
@@ -237,7 +238,11 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 
 	** *A lire absolument* (mars 2019, viens de sortir) : https://dzone.com/articles/programming-styles-spring-boot-vis-a-vis-with-ecli et sa suite https://dzone.com/articles/programming-styles-compared-spring-framework-vis-a
 
+
+* Microservices reference architecture (IBM) : https://www.ibm.com/cloud/garage/architectures/microservices/reference-architecture
+	** Jeter également un oeil au "Get started with a microservices architecture" qui est dispo avec
 * Cast Codeurs 204, sur Netflix qui abandonne le développement de sa stack OSS au profit du fork que Spring a réalisé dessus ("eureka" remplacé par "spring-eureka", à revérifier)
+* Cast Codeurs 207, vérifier, mais apparemment l'implémentation Thorntail de MicroProfile est en passe d'être abandonnée
 * 12@13 d'Antonio GONCALVES sur l'architecture microservices
 * RefCardz Spring Boot et microservices
 
@@ -514,8 +519,8 @@ ON PLACE LES 15 20 min de pause ICI !
 
 -> Au total, ~2h30 de présentation (slides et demo)
 
+=== 1 rapide définition de ce qu'est un microservice et un peu d'histoire
 
-
-
+Confère le livre Spring in action (voir pages annotées) : microservices comme principal architecture pattern pour le développement d'application cloud
 
 
