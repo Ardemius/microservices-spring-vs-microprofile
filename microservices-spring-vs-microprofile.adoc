@@ -417,7 +417,7 @@ notion d'isolation pour les microservices (trouver une ref plus précise), or l'
 
 === Microservices "core"
 
-ap19 - 20 : les principales caractéristiques
+l1 p19 - 20 : les principales caractéristiques
 
 Bien parler de la *communication entre microservices* : 
 
@@ -511,6 +511,10 @@ ON PLACE LES 15 20 min de pause ICI !
 	** Présentation de la stack Microprofile -> ON PART SUR *OPEN LIBERTY*
 		**** présenter les principales implémentations de la spec MicroProfile (et donner la dernière version actuelle !)
 	** Présentation exhaustive des technos que nous avons choisies pour les 2 stacks 
+		**** Spring
+		**** MicroProfile
+			****** JAX-RS
+			****** CDI
 5. Conclusion : récapitulatif des points communs / différences entre les 2 stacks
 6. On se projette dans l'avenir...
 	** les protocoles de communications : gRPC poussé par Kubernetes, et GraphQL
@@ -521,6 +525,6 @@ ON PLACE LES 15 20 min de pause ICI !
 
 === 1 rapide définition de ce qu'est un microservice et un peu d'histoire
 
-Confère le livre Spring in action (voir pages annotées) : microservices comme principal architecture pattern pour le développement d'application cloud
-
+Confère le livre Spring in action (voir pages annotées) : microservices comme principal architecture pattern pour le développement d'application cloud +
+-> Les applications cloud (native ?) sont un 1er use case, le 2nd étant la migration d'un monolithe vers une application microservices 
 
