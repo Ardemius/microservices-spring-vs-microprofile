@@ -488,9 +488,16 @@ Donc, avant d'aller plus loin, commençons par rappelez ce qu'on entend exacteme
 
 == PLAN au 01/04/2019
 
+0. présentation des speakers
 1. rapide définition de ce qu'est un microservice et un peu d'histoire
+	** def d'Alistair et un rien d'histoire
+	** parler des principaux use cases adressés par les microservices
+		**** cloud native app
+		**** migration from monolith
 2. le "core" des microservices
-3. puis tout l'environnement qui gravite autour. On va y distinguer :
+	** principaux concepts : REST et communication en JSON
+3. puis tout l'environnement qui gravite autour. On va y distinguer : +
+-> pour chaque feature, max 1 à 2 lignes d'explication
 	** API Gateway
 	** Service Discovery
 	** Load Balancer
@@ -502,21 +509,33 @@ Donc, avant d'aller plus loin, commençons par rappelez ce qu'on entend exacteme
 	** monitoring and logging
 	** security
 -> bien faire une présentation *AGNOSTIQUE à la techno* à ce niveau. +
-Faire un schéma global sur la modèle de celui de Susane KAISER lors du Voxxed Days microservices 2018
+Faire un schéma global sur la modèle de celui de Susanne KAISER lors du Voxxed Days microservices 2018
 
 ON PLACE LES 15 20 min de pause ICI ! 
 
 4. Passage à la pratique et demo
-	** Présentation de la stack Spring Boot et Cloud
+	** Présentation de la stack Spring pour les microservices (à avoir les projets Spring Boot et Cloud)
+		**** Que fait Spring Boot ? Que fait Spring Cloud ?
 	** Présentation de la stack Microprofile -> ON PART SUR *OPEN LIBERTY*
 		**** présenter les principales implémentations de la spec MicroProfile (et donner la dernière version actuelle !)
+		**** VEILLE TECHNO : warning sur Thorntail BIEN À VÉRIFIER (Cast Codeurs 207)
 	** Présentation exhaustive des technos que nous avons choisies pour les 2 stacks 
 		**** Spring
 		**** MicroProfile
 			****** JAX-RS
 			****** CDI
+	** Demo
+		**** QUE VA FAIRE L'APPLICATION DE DEMO !!!! +
+		-> ON VA CODER LE GANTELET DE L'INFINI ! +
+		Principe : 2 équipes de super héros vont faire la course pour récupérer les gemmes du gantelet +
+		1 gemme par feature de l'environnement microservices (on en a 6) +
+		**** Diagramme d'architecture
+		**** step by step : slide (diag archi avec en couleur brique de l'étape) PUIS codage
 5. Conclusion : récapitulatif des points communs / différences entre les 2 stacks
-6. On se projette dans l'avenir...
+	** Spring est très vite "up to date" avec l'état de l'art du marché +
+	-> LA TOUCHE DE FIN : Gif animé (ou image fixe et texte incrusté) de Thanos en train de sourire après avoir trucidé la moitié de l'univers. +
+	Avec cette question : Entre Sprint et Microprofile qui choisissez-vous ?
+6. BONUS DE FIN ! Infinity War 2 -> Quelle pourrait être la suite ?
 	** les protocoles de communications : gRPC poussé par Kubernetes, et GraphQL
 	** "l'autre combattant" Kubernetes (avec le service mesh Istio)
 7. On réserve 10 min pour les questions
@@ -525,6 +544,24 @@ ON PLACE LES 15 20 min de pause ICI !
 
 === 1 rapide définition de ce qu'est un microservice et un peu d'histoire
 
+max 2 à 3 slides
+
 Confère le livre Spring in action (voir pages annotées) : microservices comme principal architecture pattern pour le développement d'application cloud +
--> Les applications cloud (native ?) sont un 1er use case, le 2nd étant la migration d'un monolithe vers une application microservices 
+-> Les applications cloud (native ?) sont un 1er use case, le 2nd étant la migration d'un monolithe vers une application microservices +
+Sur ce point, voir p6 du l1
+
+
+Pour une def d'applications "cloud native" (en comparaison à cloud ready), voir https://www.entando.com/page/en/what_is_the_difference_between_cloudready_and_cloudnative?contentId=BLG4585
+
+== Programme de la journée du 04/04/2019
+
+* slides de présentations des speakers (nous)
+* faire fonctionner demo sur machine Thomas (test et backup AU CAS OU en cas de pépin pour la conf)
+* test de défilement des slides sur un écran projeté
+* se mettre d'accord "finement" sur le plan
+
+=== Pour la prochaine fois
+
+* TESTER UNE TELECOMMANDE pour la présentation (ramener ma Logitech laser)
+* 
 
