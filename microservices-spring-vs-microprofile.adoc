@@ -124,7 +124,7 @@ In the context of SOA, SOA governance guides the development of reusable service
 
 -> les microservices peuvent être vues comme une *évolution des architectures SOA* : voir https://dzone.com/articles/microservices-in-practice-1
 
-Le "problème" de SOA :
+Les "problèmes" de SOA :
 
 .https://dzone.com/articles/microservices-in-practice-1
 ----
@@ -134,6 +134,8 @@ Hence, with SOA, a software application is designed as a combination of 'coarse-
 
 In most cases, services in SOA are independent from each other, yet they are deployed *IN THE SAME RUNTIME* along with all other services (just think about having several web applications which are deployed into the same Tomcat instance)
 ----
+
+"La SOA et les microservices se distinguent principalement sur deux points : *les ESB lourds* et complexes de la SOA sont remplacés par des bus de messages simples sans complexité métier et robustes techniquement" (https://www.journaldunet.com/solutions/cloud-computing/1166432-microservices-est-ce-realiste/1167035-le-concept-des-microservices)
 
 * *disposable*
 
@@ -510,9 +512,13 @@ Donc, avant d'aller plus loin, commençons par rappelez ce qu'on entend exacteme
 
 0. présentation des speakers
 1. rapide définition de ce qu'est un microservice et un peu d'histoire
-	** def d'Alistair et un rien d'histoire
-		**** monolith -> SOA -> microservices
-		**** hexagonal architecture
+	** un rien d'histoire : 
+		**** *monolith (single unit) -> SOA (coarse-grained) -> microservices (fine-grained)* +
+		Pour un bon schéma de cette évolution, partir de ce schéma : https://www.researchgate.net/figure/Evolution-from-monolithic-applications-to-microservices-based-systems_fig1_327758387, et préciser la partie SOA en faisant apparaître l'ESB comme indiqué ici : https://www.capgemini.com/2016/06/microservices-in-cloud-based-infrastructure-paving-the-way-to-the/ +
+		Ce schéma propose une autre version de l'ESB : https://1904labs.com/work/case-studies/breaking-monoliths/ (*Smart endpoints and Dumb pipes* pour "dumb messaging system" pour les microservices, par opposition à la complexité métier de l'ESB, voir l'article original de *Martin Fowler* : https://martinfowler.com/articles/microservices.html#SmartEndpointsAndDumbPipes) +
+		-> On abandonne l'ESB et sa complexité en passant aux microservices (microservices = "dumb" messaging environment : https://www.journaldunet.com/solutions/cloud-computing/1166432-microservices-est-ce-realiste/1167035-le-concept-des-microservices) +
+		Faire également apparaître la *granularité* (single unit -> coarse-grained -> fine-grained : https://dzone.com/articles/microservices-vs-soa-whats-the-difference) et le *couplage* (tight coupling -> looser coupling -> decoupled : https://www.journaldunet.com/solutions/cloud-computing/1166432-microservices-est-ce-realiste/1167035-le-concept-des-microservices)
+		**** *hexagonal architecture et définition d'Alistair Cockburn d'un microservice*
 	** parler des principaux use cases adressés par les microservices
 		**** cloud native app
 		**** migration from monolith
