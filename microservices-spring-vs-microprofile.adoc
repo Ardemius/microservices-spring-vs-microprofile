@@ -128,7 +128,11 @@ Le "problème" de SOA :
 
 .https://dzone.com/articles/microservices-in-practice-1
 ----
-In most cases, services in SOA are independent from each other, yet they are deployed *in the same runtime* along with all other services (just think about having several web applications which are deployed into the same Tomcat instance)
+Hence, with SOA, a software application is designed as a combination of 'coarse-grained' services. However, in SOA, THE SCOPE OF A SERVICE IS VERY BROAD. That leads to complex and mammoth services with several dozens of operations (functionalities) along with complex message formats and standards (e.g: all WS* standards).
+
+[...]
+
+In most cases, services in SOA are independent from each other, yet they are deployed *IN THE SAME RUNTIME* along with all other services (just think about having several web applications which are deployed into the same Tomcat instance)
 ----
 
 * *disposable*
@@ -169,7 +173,8 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 	** Pragmatic Microservices: https://medium.com/microservices-in-practice/microservices-in-practice-7a3e85b6624c TRES BON +
 	Une autre bonne présentation des différents éléments de la stack microservices
 	** Toutes les explications du site Eclipse.org sur les bases des microservices et fonctions associées (gateway, service discovery) sont très bien faites. Exemple : https://www.eclipse.org/community/eclipse_newsletter/2017/september/article5.php
-	** *applications cloud-native* un bon schéma et une def courte et claire "L'approche Cloud-native est la façon dont les applications sont créées et déployées, non pas où elles sont exécutées." : https://www.supinfo.com/articles/single/5015-qu-est-ce-qu-une-application-cloud-native
+	** *applications cloud-native* un bon schéma et une def courte et claire "L'approche Cloud-native est la façon dont les applications sont créées et déployées, non pas où elles sont exécutées." : https://www.supinfo.com/articles/single/5015-qu-est-ce-qu-une-application-cloud-native +
+	J'aime également cette définition succincte des applications cloud native : *RESTful APIs that communicate over HTTP with JSON serialization* (https://www.slideshare.net/fortyfivan/microservices-webinar)
 
 * Spring Boot and Cloud microservices :
 	** Quick Guide to Microservices With Spring Boot 2.0, Eureka, and Spring Cloud : https://dzone.com/articles/quick-guide-to-microservices-with-spring-boot-20-e
@@ -424,7 +429,8 @@ Characteristics of microservices : (Voxxed microservices 2018 - Distant Path of 
 * service registry
 * caching
 
-Insister sur *l'environnement autour des microservices*, et reprendre l'excellent schéma de Susanne Kaiser lors du Voxxed Microservices Preparing "For a Future Microservices Journey"
+Insister sur *l'environnement autour des microservices*, et reprendre l'excellent schéma de Susanne Kaiser lors du Voxxed Microservices Preparing "For a Future Microservices Journey" +
+On peut parler pour cet environnement de "capability model" (voir https://hub.packtpub.com/capability-model-microservices/)
 
 notion d'isolation pour les microservices (trouver une ref plus précise), or l'isolation amène la redondance (DRY PLUS coupling OR isolation PLUS redundancy -> les microservices préfèrent le 2nd, cf conf VM "Hexagonal at Scale, with DDD and microservices!")
 
@@ -505,6 +511,8 @@ Donc, avant d'aller plus loin, commençons par rappelez ce qu'on entend exacteme
 0. présentation des speakers
 1. rapide définition de ce qu'est un microservice et un peu d'histoire
 	** def d'Alistair et un rien d'histoire
+		**** monolith -> SOA -> microservices
+		**** hexagonal architecture
 	** parler des principaux use cases adressés par les microservices
 		**** cloud native app
 		**** migration from monolith
@@ -527,7 +535,8 @@ Faire un schéma global sur le modèle de celui de Susanne KAISER lors du Voxxed
 
 ON PLACE LES 15 20 min de pause ICI ! 
 
-4. Passage à la pratique et demo
+4. Les forces en présence pour le passage à la pratique ! +
+-> on ne va PAS pouvoir TOUT tester, mais on va essayer de montrer comment le "core" est réalisée pour chaque stack, quelle est un peu "sa philosophie", et COMMENT ELLE S'ADAPTE / PERMET LA MISE EN PLACE DU CAPACITY MODEL
 	** Présentation de la stack Spring pour les microservices (à avoir les projets Spring Boot et Cloud)
 		**** Que fait Spring Boot ? Que fait Spring Cloud ?
 	** Présentation de la stack Microprofile -> ON PART SUR *OPEN LIBERTY*
