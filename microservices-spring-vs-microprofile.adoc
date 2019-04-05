@@ -44,7 +44,7 @@ Dans notre plan de prez, on pourrait rappeler les différents composants d'une s
 il faudrait se débrouiller pour faire nos exemples Microprofiles et Spring Boot avec les mêmes outils en commun (quand possible biensûr) +
 il faudrait essayer de garder une trame commune, pour faciliter la comparaison
 
-On pourrait toucher 2 mots des 12 factor app ?
+-> On pourrait toucher 2 mots des 12 factor app ?
 
 == Plan de la présentation
 
@@ -55,7 +55,8 @@ On pourrait toucher 2 mots des 12 factor app ?
 ** API Gateway
 ** Service Discovery
 ** Load Balancer
-** Circuit Breaker
+** Design for failure
+	**** Circuit Breaker
 	**** bulkheads
 	**** fallbacks
 ** Centralised configuration
@@ -89,6 +90,7 @@ As this can be complex, they generally do rely on frameworks to ease those steps
 
 When working with Java, *JEE* and *Spring* and 2 common ones
 
+Pour la partie *MicroProfile* :
 Taken as is, JEE is a specification for an Application Server dedicated to monolithic webapps, whereas Spring Boot and Cloud are designed to build microservices. +
 One could say there is nothing to compare, "just choose Spring", but that's just when Microprofile comes into play.
 
@@ -101,24 +103,35 @@ ____
 an architectural style or an approach to building IT systems as aset of business capabilities that are autonomous, self-contained, and loosely coupled.
 ____
 
+-> Pour un excellent article sur l'architecture hexagonale, voir le blog d'Octo : https://blog.octo.com/architecture-hexagonale-trois-principes-et-un-exemple-dimplementation/
+
 This implies that they need to be:
 
-* small:
+* *small*:
 
 .https://dzone.com/articles/microservices-in-practice-1
 ----
 The foundation of microservices architecture(MSA) is about developing a single application as a suite of *small* and *independent* services that are running in its own process, developed and deployed independently.
 ----
 
-* isolated
-* reusable
+* *isolated*
+* *reusable*
 
 .https://dzone.com/articles/microservices-in-practice-1
 ----
 In the context of SOA, SOA governance guides the development of reusable services, establishing how services will be designed and developed and how those services will change over time.
 ----
 
-* disposable
+-> les microservices peuvent être vues comme une *évolution des architectures SOA* : voir https://dzone.com/articles/microservices-in-practice-1
+
+Le "problème" de SOA :
+
+.https://dzone.com/articles/microservices-in-practice-1
+----
+In most cases, services in SOA are independent from each other, yet they are deployed *in the same runtime* along with all other services (just think about having several web applications which are deployed into the same Tomcat instance)
+----
+
+* *disposable*
 
 The need of *failing fast* 
 
@@ -152,7 +165,7 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 	** https://fr.slideshare.net/BenWilcock1/microservices-java-ee-vs-spring-boot-and-spring-cloud : old (2016) but GREAT RESOURCE
 		**** the associated GitHub repo is also very good (https://github.com/benwilcock/cqrs-microservice-sampler) +
 		A detailed explanation of the work done is also available at https://benwilcock.wordpress.com/2016/06/20/microservices-with-spring-boot-axon-cqrses-and-docker/
-	** https://dzone.com/articles/microservices-in-practice-1: good def of all elements of the microservices stack
+	** https://dzone.com/articles/microservices-in-practice-1: VERY GOOD def of all elements of the microservices stack
 	** Pragmatic Microservices: https://medium.com/microservices-in-practice/microservices-in-practice-7a3e85b6624c TRES BON +
 	Une autre bonne présentation des différents éléments de la stack microservices
 	** Toutes les explications du site Eclipse.org sur les bases des microservices et fonctions associées (gateway, service discovery) sont très bien faites. Exemple : https://www.eclipse.org/community/eclipse_newsletter/2017/september/article5.php
@@ -242,7 +255,7 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 * Microservices reference architecture (IBM) : https://www.ibm.com/cloud/garage/architectures/microservices/reference-architecture
 	** Jeter également un oeil au "Get started with a microservices architecture" qui est dispo avec
 * Cast Codeurs 204, sur Netflix qui abandonne le développement de sa stack OSS au profit du fork que Spring a réalisé dessus ("eureka" remplacé par "spring-eureka", à revérifier)
-* Cast Codeurs 207, vérifier, mais apparemment l'implémentation Thorntail de MicroProfile est en passe d'être abandonnée
+* Cast Codeurs 207, vérifier, mais apparemment l'implémentation Thorntail de MicroProfile (en v4 actuellement) vis des moments difficiles (à 01:22:00)
 * 12@13 d'Antonio GONCALVES sur l'architecture microservices
 * RefCardz Spring Boot et microservices
 
@@ -269,7 +282,7 @@ Microservices is an architectural style or an approach to building IT systems as
 
 For this last ref, check:
 
-* https://hub.packtpub.com/microservices-and-service-oriented-architecture/
+* https://hub.packtpub.com/microservices-and-service-oriented-architecture/ : TRES BON pour décrire l'origine des microservices
 * https://hub.packtpub.com/capability-model-microservices/
 
 Good characteristics for microservices: https://stackoverflow.com/questions/48653762/how-microservices-are-different-from-isolated-standalone-service
@@ -429,6 +442,7 @@ C'est bien ce type de comm qui est préconisé la plupart du temps pour les micr
 
 === L'environnement autour des microservices (API Gateway, service discovery, fail-fast, etc.)
 
+* Beaucoup de complexité découlant de l'infrastructure -> faire schéma !
 * Hystrix et, de plus en plus, ses remplaçants : l'abandon d'#Hystrix au profit de #Resilience4j et #AdaptiveConcurrencyLimits (cf Fabrice Volkaert @volkaert)
 
 === Présentation de Sprint Boot et Cloud
@@ -509,7 +523,7 @@ Donc, avant d'aller plus loin, commençons par rappelez ce qu'on entend exacteme
 	** monitoring and logging
 	** security
 -> bien faire une présentation *AGNOSTIQUE à la techno* à ce niveau. +
-Faire un schéma global sur la modèle de celui de Susanne KAISER lors du Voxxed Days microservices 2018
+Faire un schéma global sur le modèle de celui de Susanne KAISER lors du Voxxed Days microservices 2018 (du début jusqu'à 05:25)
 
 ON PLACE LES 15 20 min de pause ICI ! 
 
@@ -519,7 +533,11 @@ ON PLACE LES 15 20 min de pause ICI !
 	** Présentation de la stack Microprofile -> ON PART SUR *OPEN LIBERTY*
 		**** présenter les principales implémentations de la spec MicroProfile (et donner la dernière version actuelle !)
 		**** VEILLE TECHNO : warning sur Thorntail BIEN À VÉRIFIER (Cast Codeurs 207)
-	** Présentation exhaustive des technos que nous avons choisies pour les 2 stacks 
+	** Présentation des grandes techno pour l'environnement et l'infrastructure
+		**** l'historique : Netflix OSS
+		**** La stack Hashicorp
+		**** les nouveaux qui grandissent vite (cf l'autre présentation au même Devoxx par exemple)
+	** Présentation exhaustive des technos AVEC LES VERSIONS que nous avons choisies pour les 2 stacks 
 		**** Spring
 		**** MicroProfile
 			****** JAX-RS
@@ -528,13 +546,19 @@ ON PLACE LES 15 20 min de pause ICI !
 		**** QUE VA FAIRE L'APPLICATION DE DEMO !!!! +
 		-> ON VA CODER LE GANTELET DE L'INFINI ! +
 		Principe : 2 équipes de super héros vont faire la course pour récupérer les gemmes du gantelet +
-		1 gemme par feature de l'environnement microservices (on en a 6) +
+		1 mission consiste en la récupération d'une gemme +
+		Thanos part en mission, va rencontrer sur son chemin (lors de ses missions) nos héros (il va rencontrer Thor pour le service discovery, Tony Stark pour le load balancer, etc.)
+		pour illustrer la prez : 1 super hero par feature de l'environnement microservices +
 		**** Diagramme d'architecture
-		**** step by step : slide (diag archi avec en couleur brique de l'étape) PUIS codage
+		**** step by step : slide (diag archi avec en couleur brique de l'étape) PUIS codage +
+		ordre des étapes :
+			****** REST
+			****** Service
+			****** DAO (et domain ?)
 5. Conclusion : récapitulatif des points communs / différences entre les 2 stacks
 	** Spring est très vite "up to date" avec l'état de l'art du marché +
 	-> LA TOUCHE DE FIN : Gif animé (ou image fixe et texte incrusté) de Thanos en train de sourire après avoir trucidé la moitié de l'univers. +
-	Avec cette question : Entre Sprint et Microprofile qui choisissez-vous ?
+	Avec cette question : Entre Spring et Microprofile qui Thanos supprime-t-il de l'univers ?
 6. BONUS DE FIN ! Infinity War 2 -> Quelle pourrait être la suite ?
 	** les protocoles de communications : gRPC poussé par Kubernetes, et GraphQL
 	** "l'autre combattant" Kubernetes (avec le service mesh Istio)
