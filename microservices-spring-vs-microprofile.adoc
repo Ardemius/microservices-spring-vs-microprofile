@@ -103,7 +103,13 @@ ____
 an architectural style or an approach to building IT systems as aset of business capabilities that are autonomous, self-contained, and loosely coupled.
 ____
 
--> Pour un excellent article sur l'architecture hexagonale, voir le blog d'Octo : https://blog.octo.com/architecture-hexagonale-trois-principes-et-un-exemple-dimplementation/
+-> Pour un excellent article sur l'*architecture hexagonale*, voir le blog d'Octo : https://blog.octo.com/architecture-hexagonale-trois-principes-et-un-exemple-dimplementation/ :
+
+----
+Allow an application to equally be driven by users, programs, automated test or batch scripts, and to be developed and tested in isolation from its eventual run-time devices and databases.
+OU, en français :
+Permettre à une application d’être pilotée aussi bien par des utilisateurs que par des programmes, des tests automatisés ou des scripts batchs, et d’être développée et testée en isolation de ses éventuels systèmes d’exécution et bases de données.
+----
 
 This implies that they need to be:
 
@@ -113,6 +119,8 @@ This implies that they need to be:
 ----
 The foundation of microservices architecture(MSA) is about developing a single application as a suite of *small* and *independent* services that are running in its own process, developed and deployed independently.
 ----
+
+-> on peut également rappeler le "Single Responsibility Principle" de SOLID qui est un point essentiel permettant de définir la taille d'un microservice
 
 * *isolated*
 * *reusable*
@@ -419,7 +427,35 @@ Abréviations :
 
 Les microservice c'est quoi ? A quoi servent-ils et à quels besoins nos 2 stacks doivent-elles répondre ?
 
-Définition d'Alistair COCKBURN + reminder p13
+Définition d'Alistair COCKBURN + reminder l1 p2 et p13 :
+
+----
+Microservices is an architectural style or an approach to building IT systems as aset of business capabilities that are autonomous, self-contained, and loosely coupled.
+
+A microservice is a small, loosely coupled, distributed service
+
+For microservices, keep in mind : Small, Simple and Decoupled Services = Scalable, Resilient and Flexible Applications
+----
+
+Pour l'émergence des microservices, voir l'excellent https://hub.packtpub.com/capability-model-microservices/ "What are microservices"
+
+----
+Microservices are not invented. 
+Many organizations, such as Netflix, Amazon, and eBay, successfully used the divide-and-conquer technique TO FUNCTIONALLY PARTITION THEIR MONOLITHIC APPLICATIONS INTO SMALLER ATOMIC UNITS, and each performs a single function. These organizations solved a number of prevailing issues they experienced with their monolithic application. 
+Following the success of these organizations, many other organizations started adopting this as a common pattern to refactor their monolithic applications. 
+Later, evangelists termed this pattern microservices architecture.
+----
+
+-> l1 p13 : 
+
+----
+We’re at an inflection point in history. Almost all aspects of modern society are now
+wired together via the internet. Companies that used to serve local markets are sud-
+denly  finding  that  they  can  reach  out  to  a  global  customer  base.  However,  with  a
+larger global customer base also comes global competition.
+----
+
+Et pour une définition, l1 p2 : *a microservice is a small, loosely coupled, distributed service*
 
 Microservices are *distributed systems*
 
@@ -431,10 +467,17 @@ Characteristics of microservices : (Voxxed microservices 2018 - Distant Path of 
 * service registry
 * caching
 
+Pour les caractéristiques, on a aussi :
+
+.https://thenewstack.io/from-monolith-to-microservices/
+----
+One approach to building out this developer infrastructure is to create a standard boilerplate project that encapsulates *key principles of microservice design*, including project structure, test automation, integration with instrumentation and monitoring infrastructures, patterns like circuit breakers and timeouts, API frameworks, and documentation hooks, among others.
+----
+
 Insister sur *l'environnement autour des microservices*, et reprendre l'excellent schéma de Susanne Kaiser lors du Voxxed Microservices Preparing "For a Future Microservices Journey" +
 On peut parler pour cet environnement de "capability model" (voir https://hub.packtpub.com/capability-model-microservices/)
 
-notion d'isolation pour les microservices (trouver une ref plus précise), or l'isolation amène la redondance (DRY PLUS coupling OR isolation PLUS redundancy -> les microservices préfèrent le 2nd, cf conf VM "Hexagonal at Scale, with DDD and microservices!")
+notion d'isolation pour les microservices (trouver une ref plus précise), or *l'isolation amène la redondance* (DRY PLUS coupling OR isolation PLUS redundancy -> les microservices préfèrent le 2nd, cf conf VM "Hexagonal at Scale, with DDD and microservices!")
 
 === Microservices "core"
 
@@ -519,11 +562,12 @@ Donc, avant d'aller plus loin, commençons par rappelez ce qu'on entend exacteme
 		-> On abandonne l'ESB et sa complexité en passant aux microservices (microservices = "dumb" messaging environment : https://www.journaldunet.com/solutions/cloud-computing/1166432-microservices-est-ce-realiste/1167035-le-concept-des-microservices) +
 		Faire également apparaître la *granularité* (single unit -> coarse-grained -> fine-grained : https://dzone.com/articles/microservices-vs-soa-whats-the-difference) et le *couplage* (tight coupling -> looser coupling -> decoupled : https://www.journaldunet.com/solutions/cloud-computing/1166432-microservices-est-ce-realiste/1167035-le-concept-des-microservices)
 		**** *hexagonal architecture et définition d'Alistair Cockburn d'un microservice*
+			****** rappeler les caractéristiques d'un microservice, voir l1 p13 entre autres
 	** parler des principaux use cases adressés par les microservices
+		**** migration from monolith : le use case d'origine (2010s, plutôt 2014 cf Google Trends pour l'apparition du terme microservices)
 		**** cloud native app
-		**** migration from monolith
 2. le "core" des microservices
-	** principaux concepts : REST et communication en JSON
+	** principaux concepts : REST et communication en JSON -> en gros, redonner une définition "technique" des microservices "seul dans leur coin" 
 3. puis tout l'environnement qui gravite autour. On va y distinguer : +
 -> pour chaque feature, max 1 à 2 lignes d'explication
 	** API Gateway
@@ -542,7 +586,7 @@ Faire un schéma global sur le modèle de celui de Susanne KAISER lors du Voxxed
 ON PLACE LES 15 20 min de pause ICI ! 
 
 4. Les forces en présence pour le passage à la pratique ! +
--> on ne va PAS pouvoir TOUT tester, mais on va essayer de montrer comment le "core" est réalisée pour chaque stack, quelle est un peu "sa philosophie", et COMMENT ELLE S'ADAPTE / PERMET LA MISE EN PLACE DU CAPACITY MODEL
+-> on ne va PAS pouvoir TOUT tester, ni parler de tout (il n'y aura PAS de DDD, CQRS ou ES ici), mais on va essayer de montrer comment le "core" est réalisé pour chaque stack, quelle est un peu "sa philosophie", et COMMENT ELLE S'ADAPTE / PERMET LA MISE EN PLACE DU CAPABILITY MODEL
 	** Présentation de la stack Spring pour les microservices (à avoir les projets Spring Boot et Cloud)
 		**** Que fait Spring Boot ? Que fait Spring Cloud ?
 	** Présentation de la stack Microprofile -> ON PART SUR *OPEN LIBERTY*
@@ -557,6 +601,8 @@ ON PLACE LES 15 20 min de pause ICI !
 		**** MicroProfile
 			****** JAX-RS
 			****** CDI
+	** Darren : slide pour différencier les tests (unit / intégration / Pact (consumer-driven contract testing library) (chapitre 4 MicroProfile : Spring Cloud Verifier / équivalent pour MicroProfile))
+		**** Dans notre cas, Spring est plus poussé côté test. Avec MicroProfile, il faut passer par Arquilian
 	** Demo
 		**** QUE VA FAIRE L'APPLICATION DE DEMO !!!! +
 		-> ON VA CODER LE GANTELET DE L'INFINI ! +
@@ -565,6 +611,8 @@ ON PLACE LES 15 20 min de pause ICI !
 		Thanos part en mission, va rencontrer sur son chemin (lors de ses missions) nos héros (il va rencontrer Thor pour le service discovery, Tony Stark pour le load balancer, etc.)
 		pour illustrer la prez : 1 super hero par feature de l'environnement microservices +
 		**** Diagramme d'architecture
+		**** Fonctionnalités de l'environnement des microservices que nous allons faire intervenir
+			****** on ne va PAS parler de la modélisation du domaine (et donc du DDD) qui est indépendante de la stack technique
 		**** step by step : slide (diag archi avec en couleur brique de l'étape) PUIS codage +
 		ordre des étapes :
 			****** REST
@@ -580,6 +628,8 @@ ON PLACE LES 15 20 min de pause ICI !
 7. On réserve 10 min pour les questions
 
 -> Au total, ~2h30 de présentation (slides et demo)
+
+NOTE: voir si on ne parle pas d'autres techno similaires en bonus de fin : "Projects like *Dropwizard*, Spring Boot, and *Netflix Karyon* are interesting approaches to solving this"
 
 === 1 rapide définition de ce qu'est un microservice et un peu d'histoire
 
