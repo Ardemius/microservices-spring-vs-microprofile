@@ -496,6 +496,11 @@ C'est bien ce type de comm qui est préconisé la plupart du temps pour les micr
 * Beaucoup de complexité découlant de l'infrastructure -> faire schéma !
 * Hystrix et, de plus en plus, ses remplaçants : l'abandon d'#Hystrix au profit de #Resilience4j et #AdaptiveConcurrencyLimits (cf Fabrice Volkaert @volkaert)
 
+* Voir également l1 p18 pour une description de que l'environnement des microservices doit garantir.
+* ET SURTOUT VOIR L'EXCELLENTE l1 p27 avec le schéma associé !!!! (à reprendre ?)
+
+* rappeler la notion d'infrastructure immutable ? (l1 p25)
+
 === Présentation de Sprint Boot et Cloud
 
 Cf l1 p34 : définition de Spring Boot et Cloud
@@ -636,11 +641,28 @@ NOTE: voir si on ne parle pas d'autres techno similaires en bonus de fin : "Proj
 max 2 à 3 slides
 
 Confère le livre Spring in action (voir pages annotées) : microservices comme principal architecture pattern pour le développement d'application cloud +
--> Les applications cloud (native ?) sont un 1er use case, le 2nd étant la migration d'un monolithe vers une application microservices +
+-> la migration d'un monolithe vers une application microservices sont un 1er use case (historique), le 2nd et "main stream" maintenant sont les applications cloud-native. +
 Sur ce point, voir p6 du l1
 
-Pour une def d'applications "cloud native" (en comparaison à cloud ready), voir https://www.entando.com/page/en/what_is_the_difference_between_cloudready_and_cloudnative?contentId=BLG4585 +
-Autre très bonne ressource sur tout ce qui touche les applications cloud-native : le CNCF (Cloud Native Computing Foundation) Cloud Native Interactive Landscape (https://github.com/cncf/landscape et l'EXCELLENT https://landscape.cncf.io/)
+Pour une def d'applications *cloud native* (en comparaison à cloud ready), voir https://www.entando.com/page/en/what_is_the_difference_between_cloudready_and_cloudnative?contentId=BLG4585 +
+Autre très bonne ressource sur tout ce qui touche les applications cloud-native : le CNCF (*Cloud Native Computing Foundation*) Cloud Native Interactive Landscape (https://github.com/cncf/landscape et l'EXCELLENT https://landscape.cncf.io/) +
+Une autre très bonne def des applications cloud-native ici : https://medium.com/walmartlabs/cloud-native-application-architecture-a84ddf378f82 :
+
+----
+Cloud native is an approach for building applications as micro-services and running them on a containerised and dynamically orchestrated platforms that fully exploits the advantages of the cloud computing model.
+Cloud-native is about HOW applications are created and deployed, NOT WHERE.
+----
+
+Voir également la vidéo de Pivotal (~2 min) sur ce qu'est *l'approche Cloud Native* : https://pivotal.io/fr/cloud-native +
+Elle insiste sur ces 3 caractéristiques :
+
+* *architecture microservices* : implies multiple, independent teams working to make a system better
+* *Continuous Delivery* : CD is a clear, automated path that lets developers rapidly deploy to production environments
+* *DevOps* : DevOps culture helps developers and operations work together to deliver shared value to the customer
+
+TRES IMPORTANT : *Cloud-native is about how applications are created and deployed, not where* (def dans plusieurs ressources, dont ici : https://medium.com/walmartlabs/cloud-native-application-architecture-a84ddf378f82)
+
+Se servir de cette image de Pivotal : https://cdn-images-1.medium.com/max/358/1*8tS36qcyZ2c-kYF3zSrbfA.png
 
 == Programme de la journée du 04/04/2019
 
