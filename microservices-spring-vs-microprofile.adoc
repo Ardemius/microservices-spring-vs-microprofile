@@ -184,7 +184,7 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 	Une autre bonne présentation des différents éléments de la stack microservices
 	** Toutes les explications du site Eclipse.org sur les bases des microservices et fonctions associées (gateway, service discovery) sont très bien faites. Exemple : https://www.eclipse.org/community/eclipse_newsletter/2017/september/article5.php
 	** *applications cloud-native* un bon schéma et une def courte et claire "L'approche Cloud-native est la façon dont les applications sont créées et déployées, non pas où elles sont exécutées." : https://www.supinfo.com/articles/single/5015-qu-est-ce-qu-une-application-cloud-native +
-	J'aime également cette définition succincte des applications cloud native : *RESTful APIs that communicate over HTTP with JSON serialization* (https://www.slideshare.net/fortyfivan/microservices-webinar)
+	J'aime également cette définition succincte des applications cloud native : *RESTful APIs that communicate over HTTP with JSON serialization* (https://www.slideshare.net/fortyfivan/microservices-webinar, slide 6)
 
 * Spring Boot and Cloud microservices :
 	** Quick Guide to Microservices With Spring Boot 2.0, Eureka, and Spring Cloud : https://dzone.com/articles/quick-guide-to-microservices-with-spring-boot-20-e
@@ -639,8 +639,8 @@ Confère le livre Spring in action (voir pages annotées) : microservices comme 
 -> Les applications cloud (native ?) sont un 1er use case, le 2nd étant la migration d'un monolithe vers une application microservices +
 Sur ce point, voir p6 du l1
 
-
-Pour une def d'applications "cloud native" (en comparaison à cloud ready), voir https://www.entando.com/page/en/what_is_the_difference_between_cloudready_and_cloudnative?contentId=BLG4585
+Pour une def d'applications "cloud native" (en comparaison à cloud ready), voir https://www.entando.com/page/en/what_is_the_difference_between_cloudready_and_cloudnative?contentId=BLG4585 +
+Autre très bonne ressource sur tout ce qui touche les applications cloud-native : le CNCF (Cloud Native Computing Foundation) Cloud Native Interactive Landscape (https://github.com/cncf/landscape et l'EXCELLENT https://landscape.cncf.io/)
 
 == Programme de la journée du 04/04/2019
 
