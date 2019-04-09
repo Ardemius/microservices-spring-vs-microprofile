@@ -479,7 +479,7 @@ On peut parler pour cet environnement de "capability model" (voir https://hub.pa
 
 notion d'isolation pour les microservices (trouver une ref plus précise), or *l'isolation amène la redondance* (DRY PLUS coupling OR isolation PLUS redundancy -> les microservices préfèrent le 2nd, cf conf VM "Hexagonal at Scale, with DDD and microservices!")
 
-=== Microservices "core"
+=== Focus sur le "core" des microservices
 
 l1 p19 - 20 : les principales caractéristiques
 
@@ -493,13 +493,22 @@ C'est bien ce type de comm qui est préconisé la plupart du temps pour les micr
 
 === L'environnement autour des microservices (API Gateway, service discovery, fail-fast, etc.)
 
+-> Reprendre l'excellent schéma de Susanne Kaiser lors du Voxxed Microservices Preparing "For a Future Microservices Journey" +
+https://www.youtube.com/watch?v=sIlQ5iYeqIE à partir de 02:15, et voir également la liste des techno nécessaires en 04:26
+
 * Beaucoup de complexité découlant de l'infrastructure -> faire schéma !
 * Hystrix et, de plus en plus, ses remplaçants : l'abandon d'#Hystrix au profit de #Resilience4j et #AdaptiveConcurrencyLimits (cf Fabrice Volkaert @volkaert)
 
 * Voir également l1 p18 pour une description de que l'environnement des microservices doit garantir.
 * ET SURTOUT VOIR L'EXCELLENTE l1 p27 avec le schéma associé !!!! (à reprendre ?)
 
-* rappeler la notion d'infrastructure immutable ? (l1 p25)
+NOTE: concernant l'API gateway (ou service gateway), bien voir la note l1 p156 sur leur conception, afin d'éviter qu'ils ne deviennent des bottlenecks
+
+* Immutable infrastructure l1 p25 (et §10) : "once a service is deployed, the infrastructure it's running on is never touched again by human hands"
+* Infrastructure as code l1 p25 (et §10) +
+-> les 2 sont obtenus via Docker
+
+Parler également des serveurs renaissants ? (*phoenix servers*, cf Martin Fowler https://martinfowler.com/bliki/PhoenixServer.html)
 
 === Présentation de Sprint Boot et Cloud
 
@@ -642,7 +651,7 @@ max 2 à 3 slides
 
 Confère le livre Spring in action (voir pages annotées) : microservices comme principal architecture pattern pour le développement d'application cloud +
 -> la migration d'un monolithe vers une application microservices sont un 1er use case (historique), le 2nd et "main stream" maintenant sont les applications cloud-native. +
-Sur ce point, voir p6 du l1
+Sur ce point, voir l1 p6
 
 Pour une def d'applications *cloud native* (en comparaison à cloud ready), voir https://www.entando.com/page/en/what_is_the_difference_between_cloudready_and_cloudnative?contentId=BLG4585 +
 Autre très bonne ressource sur tout ce qui touche les applications cloud-native : le CNCF (*Cloud Native Computing Foundation*) Cloud Native Interactive Landscape (https://github.com/cncf/landscape et l'EXCELLENT https://landscape.cncf.io/) +
