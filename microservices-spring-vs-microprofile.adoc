@@ -475,7 +475,7 @@ One approach to building out this developer infrastructure is to create a standa
 ----
 
 Insister sur *l'environnement autour des microservices*, et reprendre l'excellent schéma de Susanne Kaiser lors du Voxxed Microservices Preparing "For a Future Microservices Journey" +
-On peut parler pour cet environnement de "capability model" (voir https://hub.packtpub.com/capability-model-microservices/)
+On peut parler pour cet environnement de "capability model" (voir https://hub.packtpub.com/capability-model-microservices/ et https://www.oreilly.com/library/view/microservices-building-scalable/9781787285835/ch12s03.html)
 
 notion d'isolation pour les microservices (trouver une ref plus précise), or *l'isolation amène la redondance* (DRY PLUS coupling OR isolation PLUS redundancy -> les microservices préfèrent le 2nd, cf conf VM "Hexagonal at Scale, with DDD and microservices!")
 
@@ -493,16 +493,23 @@ C'est bien ce type de comm qui est préconisé la plupart du temps pour les micr
 
 === L'environnement autour des microservices (API Gateway, service discovery, fail-fast, etc.)
 
+l1 p17 : "Microservices are more than writing the code"
+
 -> Reprendre l'excellent schéma de Susanne Kaiser lors du Voxxed Microservices Preparing "For a Future Microservices Journey" +
 https://www.youtube.com/watch?v=sIlQ5iYeqIE à partir de 02:15, et voir également la liste des techno nécessaires en 04:26
 
 * Beaucoup de complexité découlant de l'infrastructure -> faire schéma !
+
 * Hystrix et, de plus en plus, ses remplaçants : l'abandon d'#Hystrix au profit de #Resilience4j et #AdaptiveConcurrencyLimits (cf Fabrice Volkaert @volkaert)
 
-* Voir également l1 p18 pour une description de que l'environnement des microservices doit garantir.
+* Voir également l1 p18 pour une description de ce que l'environnement des microservices doit garantir.
 * ET SURTOUT VOIR L'EXCELLENTE l1 p27 avec le schéma associé !!!! (à reprendre ?)
 
 NOTE: concernant l'API gateway (ou service gateway), bien voir la note l1 p156 sur leur conception, afin d'éviter qu'ils ne deviennent des bottlenecks
+
+* Load Balancer : as soon as multiple instances are running	
+
+* API Gateway : le point d'entrée unique pour tous les services, permet également d'implémenter plusieurs fonctionnalités transverses, dont les static et dynamic routing
 
 * Immutable infrastructure l1 p25 (et §10) : "once a service is deployed, the infrastructure it's running on is never touched again by human hands"
 * Infrastructure as code l1 p25 (et §10) +
