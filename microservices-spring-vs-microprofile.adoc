@@ -44,7 +44,7 @@ Dans notre plan de prez, on pourrait rappeler les différents composants d'une s
 il faudrait se débrouiller pour faire nos exemples Microprofiles et Spring Boot avec les mêmes outils en commun (quand possible biensûr) +
 il faudrait essayer de garder une trame commune, pour faciliter la comparaison
 
--> On pourrait toucher 2 mots des 12 factor app ?
+-> On pourrait toucher 2 mots des 12 factor app ? Voir l1 p55
 
 == Plan de la présentation
 
@@ -176,11 +176,11 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 == Resources
 
 * Microservices "core" :
-	** https://fr.slideshare.net/BenWilcock1/microservices-java-ee-vs-spring-boot-and-spring-cloud : old (2016) but GREAT RESOURCE
+	** https://fr.slideshare.net/BenWilcock1/microservices-java-ee-vs-spring-boot-and-spring-cloud : old (2016), surtout un plébiscite de Spring Boot comparé à JEE
 		**** the associated GitHub repo is also very good (https://github.com/benwilcock/cqrs-microservice-sampler) +
 		A detailed explanation of the work done is also available at https://benwilcock.wordpress.com/2016/06/20/microservices-with-spring-boot-axon-cqrses-and-docker/
 	** https://dzone.com/articles/microservices-in-practice-1: VERY GOOD def of all elements of the microservices stack
-	** Pragmatic Microservices: https://medium.com/microservices-in-practice/microservices-in-practice-7a3e85b6624c TRES BON +
+	** *Pragmatic Microservices*: https://medium.com/microservices-in-practice/microservices-in-practice-7a3e85b6624c TRES TRES BON +
 	Une autre bonne présentation des différents éléments de la stack microservices
 	** Toutes les explications du site Eclipse.org sur les bases des microservices et fonctions associées (gateway, service discovery) sont très bien faites. Exemple : https://www.eclipse.org/community/eclipse_newsletter/2017/september/article5.php
 	** *applications cloud-native* un bon schéma et une def courte et claire "L'approche Cloud-native est la façon dont les applications sont créées et déployées, non pas où elles sont exécutées." : https://www.supinfo.com/articles/single/5015-qu-est-ce-qu-une-application-cloud-native +
@@ -188,6 +188,7 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 
 * Spring Boot and Cloud microservices :
 	** Quick Guide to Microservices With Spring Boot 2.0, Eureka, and Spring Cloud : https://dzone.com/articles/quick-guide-to-microservices-with-spring-boot-20-e
+	** définition de Spring Boot & Cloud l1 p6
 
 * Eclipse MicroProfile :
 	** cette suite d'articles d'Eclipse.org, traitent également de l'env tech autour des microservices : https://www.eclipse.org/community/eclipse_newsletter/2017/september/
@@ -209,6 +210,8 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 
 * *Comparaison entre Spring Boot / Cloud et MicroProfile* :
 
+	** Spring vs JEE : l1 p6
+
 	** https://www.ibm.com/blogs/bluemix/2018/09/migrate-java-microservices-from-spring-to-microprofile-p1/ : Très bonne ressource
 		**** code source avec Spring : https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes/tree/spring
 		**** code source avec MicroProfile : https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes/tree/microprofile
@@ -217,7 +220,8 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 	-> Article très récent, 21/11/2018 +
 	-> *Attention*, cela ne couvre PAS l'environnement technique adjacent (API gateway, service discovery, etc.)
 
-	** Pour une comparaison du Health check, voir https://medium.com/ibm-cloud/java-microservices-with-microprofile-health-check-and-metrics-cd70cf529626
+	** Pour une comparaison du Health check, voir https://medium.com/ibm-cloud/java-microservices-with-microprofile-health-check-and-metrics-cd70cf529626 +
+	Health Check avec Spring Actuator (inclus dans Spring Boot), voir l1 p63, réalisé par le Service Discovery
 
 	** Pour une comparaison de 2 jours de workshops (plan de formation Oxiane) pour bâtir une application microservices, l'un avec MicroProfile, l'autre avec Spring, voir : https://www.oxiane.com/voxxeddays-microservices/ +
 	TRES SYMPA POUR AVOIR *UN LISTING DE TECHNO CLASSÉ PAR CATÉGORIE* :
@@ -270,7 +274,7 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 * Microservices reference architecture (IBM) : https://www.ibm.com/cloud/garage/architectures/microservices/reference-architecture
 	** Jeter également un oeil au "Get started with a microservices architecture" qui est dispo avec
 * Cast Codeurs 204, sur Netflix qui abandonne le développement de sa stack OSS au profit du fork que Spring a réalisé dessus ("eureka" remplacé par "spring-eureka", à revérifier)
-* Cast Codeurs 207, vérifier, mais apparemment l'implémentation Thorntail de MicroProfile (en v4 actuellement) vis des moments difficiles (à 01:22:00)
+* Cast Codeurs 206 et 207, vérifier, mais apparemment l'implémentation Thorntail de MicroProfile (en v4 actuellement) vis des moments difficiles (à 01:22:00)
 * 12@13 d'Antonio GONCALVES sur l'architecture microservices
 * RefCardz Spring Boot et microservices
 
@@ -449,10 +453,8 @@ Later, evangelists termed this pattern microservices architecture.
 -> l1 p13 : 
 
 ----
-We’re at an inflection point in history. Almost all aspects of modern society are now
-wired together via the internet. Companies that used to serve local markets are sud-
-denly  finding  that  they  can  reach  out  to  a  global  customer  base.  However,  with  a
-larger global customer base also comes global competition.
+We’re at an inflection point in history. Almost all aspects of modern society are now wired together via the internet. 
+Companies that used to serve local markets are suddenly finding that they can reach out to a global customer base. However, with a larger global customer base also comes global competition. 
 ----
 
 Et pour une définition, l1 p2 : *a microservice is a small, loosely coupled, distributed service*
@@ -479,18 +481,6 @@ On peut parler pour cet environnement de "capability model" (voir https://hub.pa
 
 notion d'isolation pour les microservices (trouver une ref plus précise), or *l'isolation amène la redondance* (DRY PLUS coupling OR isolation PLUS redundancy -> les microservices préfèrent le 2nd, cf conf VM "Hexagonal at Scale, with DDD and microservices!")
 
-=== Focus sur le "core" des microservices
-
-l1 p19 - 20 : les principales caractéristiques
-
-Bien parler de la *communication entre microservices* : 
-
-* synchrone : tight coupling, REST calls
-* *asynchrone* : Rabbit / Kafka, loose coupling +
-C'est bien ce type de comm qui est préconisé la plupart du temps pour les microservices -> CHECKER QU'ON L'INTEGRE BIEN DANS LA DEMO
-
--> pour ce point, voir https://dzone.com/articles/how-are-your-microservices-talking, qui repropose également une def des microservices
-
 === L'environnement autour des microservices (API Gateway, service discovery, fail-fast, etc.)
 
 l1 p17 : "Microservices are more than writing the code"
@@ -511,11 +501,26 @@ NOTE: concernant l'API gateway (ou service gateway), bien voir la note l1 p156 s
 
 * API Gateway : le point d'entrée unique pour tous les services, permet également d'implémenter plusieurs fonctionnalités transverses, dont les static et dynamic routing
 
+* Asynchronous messaging : pour tout ce qui est communication Event Driven (RabbitMQ, Kafka). Permet d’améliorer le découplage des microservices. +
+Attention toutefois, on peut devenir dépendant (donc re-couplage) de la version du type de message. Ex: JSON ne supporte pas nativement le versioning, contrairement à Avro (poussé par Kafka) 
+
 * Immutable infrastructure l1 p25 (et §10) : "once a service is deployed, the infrastructure it's running on is never touched again by human hands"
 * Infrastructure as code l1 p25 (et §10) +
 -> les 2 sont obtenus via Docker
 
 Parler également des serveurs renaissants ? (*phoenix servers*, cf Martin Fowler https://martinfowler.com/bliki/PhoenixServer.html)
+
+=== Focus sur le "core" des microservices
+
+l1 p19 - 20 : les principales caractéristiques
+
+Bien parler de la *communication entre microservices* : 
+
+* synchrone : tight coupling, REST calls
+* *asynchrone* : Rabbit / Kafka, loose coupling +
+C'est bien ce type de comm qui est préconisé la plupart du temps pour les microservices -> CHECKER QU'ON L'INTEGRE BIEN DANS LA DEMO
+
+-> pour ce point, voir https://dzone.com/articles/how-are-your-microservices-talking, qui repropose également une def des microservices
 
 === Présentation de Sprint Boot et Cloud
 
@@ -646,6 +651,7 @@ ON PLACE LES 15 20 min de pause ICI !
 6. BONUS DE FIN ! Infinity War 2 -> Quelle pourrait être la suite ?
 	** les protocoles de communications : gRPC poussé par Kubernetes, et GraphQL
 	** "l'autre combattant" Kubernetes (avec le service mesh Istio)
+	** Et maintenant Quarkus ! https://developers.redhat.com/blog/2019/03/07/quarkus-next-generation-kubernetes-native-java-framework/
 7. On réserve 10 min pour les questions
 
 -> Au total, ~2h30 de présentation (slides et demo)
@@ -690,5 +696,30 @@ Se servir de cette image de Pivotal : https://cdn-images-1.medium.com/max/358/1*
 === Pour la prochaine fois
 
 * TESTER UNE TELECOMMANDE pour la présentation (ramener ma Logitech laser)
-* 
+
+
+2 microservices
+
+5 composants
+service discovery avec Consul : Spring et MicroProfile
+load balancer avec Fabio : Spring et MicroProfile
+design for failure avec Hystrix : Spring et MicroProfile
+log correlation avec Sleuth
+distributed tracing avec Zipkin
+
+
+
+Contrat : (2 microservices au moins)
+
+Mission createMission(Stone, Place)
+	getStone(Stone.name)
+List<Stone> findAllStones
+
+
+Darren m'envoie les paramètres pour le contrat
+
+Mission : stone + lieu + ...
+
+DevTools
+
 
