@@ -111,6 +111,8 @@ OU, en français :
 Permettre à une application d’être pilotée aussi bien par des utilisateurs que par des programmes, des tests automatisés ou des scripts batchs, et d’être développée et testée en isolation de ses éventuels systèmes d’exécution et bases de données.
 ----
 
+Pour une présentation *très simple et claire* (vraiment très très bien !), voir également cet article de Xebia : https://blog.xebia.fr/2016/03/16/perennisez-votre-metier-avec-larchitecture-hexagonale/
+
 This implies that they need to be:
 
 * *small*:
@@ -216,7 +218,7 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 		**** code source avec Spring : https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes/tree/spring
 		**** code source avec MicroProfile : https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes/tree/microprofile
 
-	** Pour la partie vraiment "core" du dev des microservices : https://developers.redhat.com/blog/2018/11/21/eclipse-microprofile-for-spring-boot-developers/ +
+	** Pour *la partie vraiment "core"* du dev des microservices : https://developers.redhat.com/blog/2018/11/21/eclipse-microprofile-for-spring-boot-developers/ +
 	-> Article très récent, 21/11/2018 +
 	-> *Attention*, cela ne couvre PAS l'environnement technique adjacent (API gateway, service discovery, etc.)
 
@@ -508,7 +510,8 @@ Attention toutefois, on peut devenir dépendant (donc re-couplage) de la version
 * Infrastructure as code l1 p25 (et §10) +
 -> les 2 sont obtenus via Docker
 
-Parler également des serveurs renaissants ? (*phoenix servers*, cf Martin Fowler https://martinfowler.com/bliki/PhoenixServer.html)
+Parler également des serveurs renaissants ? (*phoenix servers*, cf Martin Fowler https://martinfowler.com/bliki/PhoenixServer.html) +
+Par opposition aux servers "longue durée" (snowflake servers), voir https://www.thoughtworks.com/insights/blog/moving-to-phoenix-server-pattern-introduction
 
 === Focus sur le "core" des microservices
 
@@ -518,17 +521,40 @@ Bien parler de la *communication entre microservices* :
 
 * synchrone : tight coupling, REST calls
 * *asynchrone* : Rabbit / Kafka, loose coupling +
-C'est bien ce type de comm qui est préconisé la plupart du temps pour les microservices -> CHECKER QU'ON L'INTEGRE BIEN DANS LA DEMO
+C'est bien ce type de comm qui est préconisé la plupart du temps pour les microservices
 
--> pour ce point, voir https://dzone.com/articles/how-are-your-microservices-talking, qui repropose également une def des microservices
+-> pour ce point, voir :
+
+* https://dzone.com/articles/microservices-in-practice-1
+* https://dzone.com/articles/introduction-to-microservices-messaging-protocols : donne les use cases des communications synchrones et asynchrones
+
+	** *synchronous* : Use HTTP/REST (synchronous) communication for services outside of the internal microservices structure. +
+	The HTTP/REST communication is ideal for external requests, as it’s built to easily handle items like real-time interactions from a client.
+	** *asynchronous* : Use AMQP (asynchronous) for communication methods within the internal microservices structure +
+	Asynchronous messaging protocols such as AMQP, STOMP or MQTT -> client doesn’t expects a response immediately, or not accepts a response at all +
+	Asynchronous communication means that a service doesn’t need to wait on another to conclude its current task.
+
+* https://dzone.com/articles/how-are-your-microservices-talking, qui repropose également une def des microservices :
+
+----
+Microservices can be thought of as minimal units of functionality, can be deployed independently, are reusable, and communicate with each other via various network protocols like HTTP (more on that in a moment).
+----
 
 === Présentation de Sprint Boot et Cloud
 
-Cf l1 p34 : définition de Spring Boot et Cloud
+Cf l1 p28 et p34 : définition de Spring Boot et Cloud
+
+* Création de Spring Boot en avril 2014 (Spring Cloud 1.0.0)
+* Création de Spring Cloud en mars 2015 (Spring Cloud 1.0.0)
 
 Refcardz DZone : Spring boot pas d'app server comparé à JEE classique : "Specifically, Spring Boot is concerned with building "bootable" applications that can boot up on bare metal or virtualized infrastructure without any elaborate ecosystem such as application servers or web containers".
 
 === Présentation de Microprofile
+
+* Création de Eclipse MicroProfile en XXX (MicroProfile 1.0.0)
+
+* Pour une très bonne définition de ce qu'est Eclipse Microprofile, voir l2 p37, et p43
+* Voir également https://www.baeldung.com/eclipse-microprofile
 
 Parler de Thorntail (anciennement Wildfly Swarm), Open Liberty, Payara, TomEE et mentionner qu'il existe d'autres implémentations de MicroProfile.
 -> Voir https://developers.redhat.com/blog/2018/11/21/eclipse-microprofile-for-spring-boot-developers/
@@ -601,7 +627,7 @@ Donc, avant d'aller plus loin, commençons par rappelez ce qu'on entend exacteme
 	** Load Balancer
 	** Design for failure
 		**** Circuit Breaker
-		**** bulkheads
+		**** bulkheads : voir l1 p136
 		**** fallbacks
 	** Centralised configuration
 	** monitoring and logging
@@ -632,10 +658,15 @@ ON PLACE LES 15 20 min de pause ICI !
 	** Demo
 		**** QUE VA FAIRE L'APPLICATION DE DEMO !!!! +
 		-> ON VA CODER LE GANTELET DE L'INFINI ! +
-		Principe : 2 équipes de super héros vont faire la course pour récupérer les gemmes du gantelet +
 		1 mission consiste en la récupération d'une gemme +
 		Thanos part en mission, va rencontrer sur son chemin (lors de ses missions) nos héros (il va rencontrer Thor pour le service discovery, Tony Stark pour le load balancer, etc.)
 		pour illustrer la prez : 1 super hero par feature de l'environnement microservices +
+		**** Explication du Consumer Driven Contract (CDC) qu'on va utiliser. +
+		Voir les ressources :
+			****** https://thoughtworks.github.io/pacto/patterns/cdc/ : explication très globale du CDC
+			****** http://dhaval-shah.com/microservices-and-consumer-driven-contract-testing-using-pact/ : de très bonne explications sur les avantages du CDC pour les microservices
+			****** https://www.baeldung.com/pact-junit-consumer-driven-contracts : le très pragmatique site de Baeldung (très bon exemple), utilisant la techno *Pact*
+			****** la doc officielle : https://docs.pact.io/how_pact_works
 		**** Diagramme d'architecture
 		**** Fonctionnalités de l'environnement des microservices que nous allons faire intervenir
 			****** on ne va PAS parler de la modélisation du domaine (et donc du DDD) qui est indépendante de la stack technique
@@ -693,19 +724,17 @@ Se servir de cette image de Pivotal : https://cdn-images-1.medium.com/max/358/1*
 * test de défilement des slides sur un écran projeté
 * se mettre d'accord "finement" sur le plan
 
-=== Pour la prochaine fois
+=== Pour la prochaine fois 16/04/2019
 
 * TESTER UNE TELECOMMANDE pour la présentation (ramener ma Logitech laser)
 
-
-2 microservices
-
 5 composants
-service discovery avec Consul : Spring et MicroProfile
-load balancer avec Fabio : Spring et MicroProfile
-design for failure avec Hystrix : Spring et MicroProfile
-log correlation avec Sleuth
-distributed tracing avec Zipkin
+
+* service discovery avec Consul : Spring et MicroProfile
+* load balancer avec Fabio : Spring et MicroProfile
+* design for failure avec Hystrix : Spring et MicroProfile
+* log correlation avec Sleuth
+* distributed tracing avec Zipkin
 
 
 
@@ -715,11 +744,32 @@ Mission createMission(Stone, Place)
 	getStone(Stone.name)
 List<Stone> findAllStones
 
-
 Darren m'envoie les paramètres pour le contrat
 
 Mission : stone + lieu + ...
 
-DevTools
+DevTool
+
+EXPLIQUER LE CONTRAT POUR LES 2 MICROSERVICE !
+
+45 minutes de slides
+30 min de codage : REST Controller et service
+BREAK -> 15 à 20 minutes ("rendez-vous à 11h05")
+suite de la demo
+Conclusion : 15 min
+
+Démarrage de Spring Boot
+Démarrage de Spring Cloud
+Démarrage de MicroProfile
+
+Mardi : il faut qu'on se mette d'acord sur les quetsions à se poser durant la démo
+Voir comment créer une discussion entre nous à partir du slide "passage à la pratique" et jusqu'à la demo
+
+== AMELIORATIONS AU DERNIER MOMENT
+
+* slide du capability model : augmenter la taille de police
+
+
+
 
 
