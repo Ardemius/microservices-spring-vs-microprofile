@@ -562,13 +562,17 @@ Refcardz DZone : Spring boot pas d'app server comparé à JEE classique : "Speci
 
 Parler de Thorntail (anciennement Wildfly Swarm), Open Liberty, Payara, TomEE et mentionner qu'il existe d'autres implémentations de MicroProfile.
 -> Voir https://developers.redhat.com/blog/2018/11/21/eclipse-microprofile-for-spring-boot-developers/
--> Breaking news ! 11/04 - blog de Ken Finnigan : https://thorntail.io/posts/thorntail-community-announcement-on-quarkus/ +
+
+-> BREAKING NEWS ! 11/04 - blog de Ken Finnigan : https://thorntail.io/posts/thorntail-community-announcement-on-quarkus/ +
 	Pour rappel, Ken Finnigan est le co-fondateur et leader du projet Wildfly Swarm / Thorntail
 
 Parler de *"Just enough Application Server"*
 Historiquement, un application server c'était *"one size fits all"* (l2 p41)
 
-l2 p43 : Eclipse Microprofile : une initiative communautaire pour "optimiser Enterprise Java pour les microservices"
+Voir également l'excellent talk d'Antonio GONCALVES (https://antoniogoncalves.org/2016/07/13/just-enough-app-server-with-wildfly-swarm/ le quickie à Devoxx UK 2016), pour une très bonne explication de ce qu'est Thorntail avec un exemple de code (comparé à un server d'app JEE classique) -> *le JeAS est compris dans un uber-jar, avec JUSTE les dépendances requises*
+
+l2 p43 : Eclipse Microprofile : une initiative communautaire pour "optimiser Java Enterprise pour les microservices"
+l2 p44 : 
 
 2019/02/10 MicroProfile 2.2 : https://microprofile.io/2019/02/12/eclipse-microprofile-2-2-is-now-available/
 
@@ -579,8 +583,21 @@ Pour Thorntail, voir l2 p56 : Thorntail - the most flexible JeAS runtime
 
 * Rebranding of WildFly Swarm 2018.5.0 to Thorntail 2.0.0 in late June 2018
 
+Présenter les différentes implémentations de MicroProfile avec https://wiki.eclipse.org/MicroProfile/Implementation : +
+SmallRye / Thorntail / Open Liberty / Payara Server et Micro
 
-JAX-RS is just an API : Glassfish comes with the implementation Jersey, while Wildfly or Jboss come with RESTEasy.
+[NOTE]
+----
+JAX-RS is just an API : Glassfish comes with the implementation *Jersey*, while Wildfly or Jboss come with *RESTEasy*.
+*Weld* is the reference implementation of the abstract JSR-299 API, which is better known as *CDI*
+----
+
+DONC, le plan de cette partie :
+
+1) just enough application server
+	** Un exemple avec un microservice ne demandant que JAX-RS, CDI et JSON-P
+2) Eclipse MicroProfile pour JUSTE les features dont les microservices ont besoin !
+3) Présentation des différentes implémentations
 
 === Live Demo
 
