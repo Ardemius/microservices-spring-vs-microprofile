@@ -556,10 +556,16 @@ Refcardz DZone : Spring boot pas d'app server comparé à JEE classique : "Speci
 === Présentation de Microprofile
 
 * Création de Eclipse MicroProfile en septembre 2016 (MicroProfile 1.0, voir l2 p43)
+la 2.2 date elle de 2019/02
 
 * Pour une très bonne définition de ce qu'est Eclipse Microprofile, voir l2 p37, et p43
 * Voir également https://www.baeldung.com/eclipse-microprofile
 * ET L'EXCELLENTE DEFINITION de tomitribe (fait partie des fondateurs de MicroProfile) : https://www.tomitribe.com/blog/what-is-eclipse-microprofile/
+	** donne cette def de MicroProfile (vient de la MicroProfile FAQ)
+
+----
+The primary purpose of MicroProfile is to create a Java Enterprise framework for implementing portable microservices across vendor solutions.
+----
 
 Parler de Thorntail (anciennement Wildfly Swarm), Open Liberty, Payara, TomEE et mentionner qu'il existe d'autres implémentations de MicroProfile.
 -> Voir https://developers.redhat.com/blog/2018/11/21/eclipse-microprofile-for-spring-boot-developers/
@@ -571,12 +577,36 @@ Parler de *"Just enough Application Server"*
 Historiquement, un application server c'était *"one size fits all"* (l2 p41)
 l2 p38 : 
 "In a nutshell, JeAS *inverts* the relationship between an application server and an application, ensuring that *you package only the parts of an application server that your application requires*"
--> On peut en final créer un Uberjar avec MicroProfile "complet" (je rappelle que toutes ses spécifications sont dédiées au Microservices), OU seulement avec certaines de ses briques ("fractions" comme les nomme Thorntail), comme MicroProfile OpenTracing
+-> On peut en final créer un Uber jar avec MicroProfile "complet" (je rappelle que toutes ses spécifications sont dédiées au Microservices), OU seulement avec certaines de ses briques ("fractions" comme les nomme Thorntail), comme MicroProfile OpenTracing
+
+NOTE: pour les *Hollow jar* (ou Hollow Uber jar), voir https://dzone.com/articles/an-introduction-to-hollow-jars :
+
+----
+A Hollow JAR is a single executable JAR file that, like an UberJAR, contains the code required to launch a single application. Unlike an UberJAR though, a Hollow JAR does not contain the application code.
+
+A typical Hollow JAR deployment then will consist of two files: the Hollow JAR itself and the WAR file that holds the application code. The Hollow JAR is then executed referencing the WAR file, and from that point on the two files run much as an UberJAR would.
+----
+
+Payara micro a l'air de faire ça (https://blog.payara.fish/introducing-payara-micro) : java -jar payara-micro.jar --deploy test.war
+
+Les avantages de JeAS sont décrits en l2 p41 :
+
+* Réduction de la taille de l'application : comparée à la somme d'une application classique PLUS le serveur d'application
+* Réduction de la mémoire allouée : va dépendre du nombre de classes qui n'auront plus besoin d'être chargées
+* Réduction de la surface d'attaque : moins de ports d'ouverts, moins de services qui tournent
+* Meilleure séparation entre les applications : comparé à un serveur d'app dans lequel on avait généralement plusieurs applications de déployées
+* Mises à jour simplifiées : la mise à jour ne concerne plus QU'UNE application
+
+-> Mais pourquoi on n'a pas fait ça avant ?! *le coût du matériel autrefois* (la machine) +
+De nos jours, avec l’avènement des VM et des containers, le constat n'est plus le même
+
+A la base, JEE 8 = 40 JSRs (voir https://www.oracle.com/technetwork/java/javaee/tech/index.html et https://blogs.oracle.com/java/java-ee-8-overview)
 
 Voir également l'excellent talk d'Antonio GONCALVES (https://antoniogoncalves.org/2016/07/13/just-enough-app-server-with-wildfly-swarm/ le quickie à Devoxx UK 2016), pour une très bonne explication de ce qu'est Thorntail avec un exemple de code (comparé à un server d'app JEE classique) -> *le JeAS est compris dans un uber-jar, avec JUSTE les dépendances requises*
 
 l2 p43 : Eclipse Microprofile : une initiative communautaire pour "optimiser Java Enterprise pour les microservices"
-l2 p44 : 
+	** donne la liste de participants initiaux : *Red Hat, IBM, Tomitribe, Payara, the London Java Community*
+*TRES BONNE DEF* - l2 p44 : Eclipse MicroProfile creates specifications for Enterprise Java microservices, with the benefit that microservices become portable between JeAS runtimes that support Eclipse MicroProfile.
 
 2019/02/10 MicroProfile 2.2 : https://microprofile.io/2019/02/12/eclipse-microprofile-2-2-is-now-available/
 
@@ -587,8 +617,9 @@ Pour Thorntail, voir l2 p56 : Thorntail - the most flexible JeAS runtime
 
 * Rebranding of WildFly Swarm 2018.5.0 to Thorntail 2.0.0 in late June 2018
 
-Présenter les différentes implémentations de MicroProfile avec https://wiki.eclipse.org/MicroProfile/Implementation : +
-SmallRye / Thorntail / Open Liberty / Payara Server et Micro
+Présenter les *différentes implémentations de MicroProfile* avec https://wiki.eclipse.org/MicroProfile/Implementation : +
+SmallRye / Thorntail / Open Liberty / Payara Server et Micro +
+-> permet également de récupérer le détail de chacune des implémentations de MicroProfile
 
 [NOTE]
 ----
@@ -600,11 +631,21 @@ DONC, le plan de cette partie :
 
 1) just enough application server
 	** Un exemple avec un microservice ne demandant que JAX-RS, CDI et JSON-P -> SCHEMA 1
-	** réutiliser le schéma l2 p42 en faisant apparaître la notion d'Uberjar ? -> SCHEMA 2
+	Pour l'exemple, voir https://www.baeldung.com/eclipse-microprofile
+	** réutiliser le schéma l2 p42 en faisant apparaître la notion d'Uber jar ? -> SCHEMA 2
 	** Pourquoi on a pas utiliser ce principe avant : *le coût du matériel autrefois* (l2 p43) +
 	De nos jours, avec l’avènement des VM et des containers, le constat n'est plus le même
 2) Eclipse MicroProfile pour JUSTE les features dont les microservices ont besoin !
 3) Présentation des différentes implémentations
+
+Implémentations supportant MicroProfile 2.2 :
+
+SmallRye
+Thorntail 2.4.0.Final
+Open Liberty 19.0.0.3
+WebSphere Liberty 19.0.0.3
+
+
 
 === Live Demo
 
@@ -630,6 +671,8 @@ On vous a parlé de création de microservices avec stack Spring et MicroProfile
 Rentrer dans le détail serait l'objet d'une présentation à part, mais on peut rapidement en dire ceci : bla bla bla (en faire une rapide présentation)
 
 Pour un bon schéma de ce qu'est un service mesh, cf "For a Future Microservices Journey"
+
+Pour une comparaison des PERFORMANCES de SPring Boot / Thorntail / Server d'app avec un microservice simple, voir le tableau du slide 20 de ce doc : http://camelcasecon.de/pdf/06_thorntail/CamelCaseCon06_Thorntail.pdf
 
 === L'avenir
 
@@ -812,6 +855,11 @@ Démarrage de MicroProfile
 
 Mardi : il faut qu'on se mette d'acord sur les quetsions à se poser durant la démo
 Voir comment créer une discussion entre nous à partir du slide "passage à la pratique" et jusqu'à la demo
+
+-> insister sur la présentation des starters, les comparer, et préciser qu'ils permettent de choisir des briques du capability model
+	** *Est-ce que Open Liberty dispose d'un starter* ? Apparemment non (j'ai pas trouvé)
+	-> comment vas-tu initier le projet pour la démo ?
+
 
 == AMELIORATIONS AU DERNIER MOMENT
 
