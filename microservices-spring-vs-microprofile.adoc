@@ -559,6 +559,7 @@ Refcardz DZone : Spring boot pas d'app server comparé à JEE classique : "Speci
 
 * Pour une très bonne définition de ce qu'est Eclipse Microprofile, voir l2 p37, et p43
 * Voir également https://www.baeldung.com/eclipse-microprofile
+* ET L'EXCELLENTE DEFINITION de tomitribe (fait partie des fondateurs de MicroProfile) : https://www.tomitribe.com/blog/what-is-eclipse-microprofile/
 
 Parler de Thorntail (anciennement Wildfly Swarm), Open Liberty, Payara, TomEE et mentionner qu'il existe d'autres implémentations de MicroProfile.
 -> Voir https://developers.redhat.com/blog/2018/11/21/eclipse-microprofile-for-spring-boot-developers/
@@ -568,6 +569,9 @@ Parler de Thorntail (anciennement Wildfly Swarm), Open Liberty, Payara, TomEE et
 
 Parler de *"Just enough Application Server"*
 Historiquement, un application server c'était *"one size fits all"* (l2 p41)
+l2 p38 : 
+"In a nutshell, JeAS *inverts* the relationship between an application server and an application, ensuring that *you package only the parts of an application server that your application requires*"
+-> On peut en final créer un Uberjar avec MicroProfile "complet" (je rappelle que toutes ses spécifications sont dédiées au Microservices), OU seulement avec certaines de ses briques ("fractions" comme les nomme Thorntail), comme MicroProfile OpenTracing
 
 Voir également l'excellent talk d'Antonio GONCALVES (https://antoniogoncalves.org/2016/07/13/just-enough-app-server-with-wildfly-swarm/ le quickie à Devoxx UK 2016), pour une très bonne explication de ce qu'est Thorntail avec un exemple de code (comparé à un server d'app JEE classique) -> *le JeAS est compris dans un uber-jar, avec JUSTE les dépendances requises*
 
@@ -576,7 +580,7 @@ l2 p44 :
 
 2019/02/10 MicroProfile 2.2 : https://microprofile.io/2019/02/12/eclipse-microprofile-2-2-is-now-available/
 
-Parler de Smallrye !!!!
+Parler de Smallrye !!!! -> l'implémentation de MicroProfile de RedHat (cf Ken Finnigan dans sa note)
 
 Le maître mot de Thorntail (https://thorntail.io/) : "Thorntail: Rightsize your Java EE Applications" +
 Pour Thorntail, voir l2 p56 : Thorntail - the most flexible JeAS runtime
@@ -595,7 +599,10 @@ JAX-RS is just an API : Glassfish comes with the implementation *Jersey*, while 
 DONC, le plan de cette partie :
 
 1) just enough application server
-	** Un exemple avec un microservice ne demandant que JAX-RS, CDI et JSON-P
+	** Un exemple avec un microservice ne demandant que JAX-RS, CDI et JSON-P -> SCHEMA 1
+	** réutiliser le schéma l2 p42 en faisant apparaître la notion d'Uberjar ? -> SCHEMA 2
+	** Pourquoi on a pas utiliser ce principe avant : *le coût du matériel autrefois* (l2 p43) +
+	De nos jours, avec l’avènement des VM et des containers, le constat n'est plus le même
 2) Eclipse MicroProfile pour JUSTE les features dont les microservices ont besoin !
 3) Présentation des différentes implémentations
 
@@ -631,6 +638,7 @@ Pour un bon schéma de ce qu'est un service mesh, cf "For a Future Microservices
 	** voir également ce que pourrait donner GraphQL à la place de REST à ce sujet. Voir le blog d'Octo https://blog.octo.com/graphql-et-pourquoi-faire/, le plus important :
 	"*L’optimisation des requêtes* ainsi que *l’optimisation des données réseaux* sont à mon sens les deux avantages majeurs de GraphQL à l’état de l’art."
 * Netflix arrête le support de sa stack OSS pour supporter les outils Spring issus du fork de cette dernière (à checker, voir les Cast Codeurs 204)
+* Absolument parler de Quarkus qui va remplacer Thorntail, voir la note de Ken Finnigan du 11/04/2019 : https://thorntail.io/posts/thorntail-community-announcement-on-quarkus/
 
 == Dans l'absolu
 
