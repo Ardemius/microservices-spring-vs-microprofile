@@ -544,20 +544,43 @@ Microservices can be thought of as minimal units of functionality, can be deploy
 
 Cf l1 p28 et p34 : définition de Spring Boot et Cloud
 
-* Création de Spring Boot en avril 2014 (Spring Cloud 1.0.0)
-* Création de Spring Cloud en mars 2015 (Spring Cloud 1.0.0)
+* Création de Spring Boot en avril 2014 (Spring Boot 1.0.0.release - https://mvnrepository.com/artifact/org.springframework.boot/spring-boot/1.0.0.RELEASE)
+	** Actuellement (2019/04) en 2.1.4
+* Création de Spring Cloud en mars 2015 (Spring Cloud 1.0.0, pre-Angel version)
+	** Pour le release train, voir 
+	Spring Cloud Greenwich -> Spring Boot 2.1.x
+	Spring Cloud Finchley  -> Spring Boot 2.0.x
 
 Refcardz DZone : Spring boot pas d'app server comparé à JEE classique : "Specifically, Spring Boot is concerned with building "bootable" applications that can boot up on bare metal or virtualized infrastructure without any elaborate ecosystem such as application servers or web containers".
 
 === Présentation de Microprofile
 
-* Création de Eclipse MicroProfile en XXX (MicroProfile 1.0.0)
+* Création de Eclipse MicroProfile en septembre 2016 (MicroProfile 1.0, voir l2 p43)
 
 * Pour une très bonne définition de ce qu'est Eclipse Microprofile, voir l2 p37, et p43
 * Voir également https://www.baeldung.com/eclipse-microprofile
 
 Parler de Thorntail (anciennement Wildfly Swarm), Open Liberty, Payara, TomEE et mentionner qu'il existe d'autres implémentations de MicroProfile.
 -> Voir https://developers.redhat.com/blog/2018/11/21/eclipse-microprofile-for-spring-boot-developers/
+-> Breaking news ! 11/04 - blog de Ken Finnigan : https://thorntail.io/posts/thorntail-community-announcement-on-quarkus/ +
+	Pour rappel, Ken Finnigan est le co-fondateur et leader du projet Wildfly Swarm / Thorntail
+
+Parler de *"Just enough Application Server"*
+Historiquement, un application server c'était *"one size fits all"* (l2 p41)
+
+l2 p43 : Eclipse Microprofile : une initiative communautaire pour "optimiser Enterprise Java pour les microservices"
+
+2019/02/10 MicroProfile 2.2 : https://microprofile.io/2019/02/12/eclipse-microprofile-2-2-is-now-available/
+
+Parler de Smallrye !!!!
+
+Le maître mot de Thorntail (https://thorntail.io/) : "Thorntail: Rightsize your Java EE Applications" +
+Pour Thorntail, voir l2 p56 : Thorntail - the most flexible JeAS runtime
+
+* Rebranding of WildFly Swarm 2018.5.0 to Thorntail 2.0.0 in late June 2018
+
+
+JAX-RS is just an API : Glassfish comes with the implementation Jersey, while Wildfly or Jboss come with RESTEasy.
 
 === Live Demo
 
