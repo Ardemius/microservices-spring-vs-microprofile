@@ -209,6 +209,7 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 	----
 	** RAHHHH, Istio Istio Istio qui semble être une solution de plus en plus préco pour MP : https://www.eclipse.org/community/eclipse_newsletter/2018/september/MicroProfile_istio.php (en plus un article récent !) -> *A LIRE ABSOLUMENT !!!!*
 	** l'eBook "Building Microservices with Enterprise Java: A Practical Guide to Eclipse MicroProfile" http://bit.ly/MP-ebook, 62 pages 2018/10, A REGARDER
+	** Voir aussi la vidéo de Susanne KAISER (toujours la même) en 14:40 : service mesh 
 
 * *Comparaison entre Spring Boot / Cloud et MicroProfile* :
 
@@ -635,7 +636,13 @@ DONC, le plan de cette partie :
 	** réutiliser le schéma l2 p42 en faisant apparaître la notion d'Uber jar ? -> SCHEMA 2
 	** Pourquoi on a pas utiliser ce principe avant : *le coût du matériel autrefois* (l2 p43) +
 	De nos jours, avec l’avènement des VM et des containers, le constat n'est plus le même
-2) Eclipse MicroProfile pour JUSTE les features dont les microservices ont besoin !
+2) Eclipse MicroProfile pour JUSTE les features dont les microservices ont besoin ! +
+	** Voir https://www.eclipsecon.org/france2018/sites/default/files/slides/MicroProfile-Meets-Istio.pptx +
+	-> slide 2 pour une présentation des principale features de MicroProfile
+	** Voir également https://fr.slideshare.net/radcortez/lightweight-enterprise-java-with-microprofile +
+	-> slides 23 à 25
+	** Et voir aussi la doc officielle : https://github.com/eclipse/microprofile/releases/tag/2.2 +
+	-> le PDF dispo explique ce que fait chaque feature (*le mieux au final*)
 3) Présentation des différentes implémentations
 
 Implémentations supportant MicroProfile 2.2 :
@@ -644,8 +651,6 @@ SmallRye
 Thorntail 2.4.0.Final
 Open Liberty 19.0.0.3
 WebSphere Liberty 19.0.0.3
-
-
 
 === Live Demo
 
@@ -672,7 +677,79 @@ Rentrer dans le détail serait l'objet d'une présentation à part, mais on peut
 
 Pour un bon schéma de ce qu'est un service mesh, cf "For a Future Microservices Journey"
 
+*PERFORMANCES*
+
 Pour une comparaison des PERFORMANCES de SPring Boot / Thorntail / Server d'app avec un microservice simple, voir le tableau du slide 20 de ce doc : http://camelcasecon.de/pdf/06_thorntail/CamelCaseCon06_Thorntail.pdf
+
+*Spring vs MicroProfile*
+
+1) Spring Web vs JAX-RS : *pour exposer une API REST* +
+-> https://developers.redhat.com/blog/2018/11/21/eclipse-microprofile-for-spring-boot-developers/
+
+SPRING
+@RestController
+@RequestMapping
+
+MP
+1 classe Application *en plus comparé à Spring* : donne un préfixe global pour tous les endpoints JAX-RS
+
+----
+@ApplicationPath("/api")
+	public class ApplicationConfig extends Application {
+}
+----
+ET
+
+----
+@Path("/greeting") // 1
+@Produces(MediaType.APPLICATION_JSON) // 2
+public class GreetingResource {
+
+   @GET // 3
+   public Response greeting(@QueryParam("name") @DefaultValue("World") String name) {  // 4
+      ...
+   }
+----
+
+Pour les *query parameter* : @RequestParam en Spring MVC contre @QueryParam en MicroProfile
+
+Parler de @Context pour injecter des valeurs telles que headers HTTP (ou security context) aux méthodes ou endpoints
+
+2) *Injection de dépendances* : Spring framework vs CDI
+
+SPRING
+@Autowired
+
+MP
+@Inject
+
+Comme Spring, CDI a le concept de beans qui vivent dans un scope donné :
+@Scope pour Spring -> @ApplicationScoped, @RequestScoped, etc. pour CDI
+
+Seule réelle différence, *le scope par défaut* :
+*singleton* pour Spring, et *@Dependent* pour CDI +
+-> correspond à *prototype* en Spring : "Scopes a single bean definition to any number of object instances."
+
+NON, pas la configuration
+3) *Configuration* : pour injecter les valeurs de configuration
+
+SPRING : @Value et @PropertySource
+Voir https://www.baeldung.com/spring-value-annotation
+
+MP : @Inject et @ConfigProperty
+
+----
+@Inject
+@ConfigProperty(name = "greeting.message")
+private String message;
+----
+
+4) Documentation en général
+
+Les tutoriaux sont bons dans les 2 cas
+* https://openliberty.io/guides/
+
+5) JPA
 
 === L'avenir
 
@@ -680,7 +757,8 @@ Pour une comparaison des PERFORMANCES de SPring Boot / Thorntail / Server d'app 
 -> voir la vidéo "Intro to gRPC: A Modern Toolkit for Microservice Communication" (https://www.youtube.com/watch?v=RoXT_Rkg8LA)
 	** voir également ce que pourrait donner GraphQL à la place de REST à ce sujet. Voir le blog d'Octo https://blog.octo.com/graphql-et-pourquoi-faire/, le plus important :
 	"*L’optimisation des requêtes* ainsi que *l’optimisation des données réseaux* sont à mon sens les deux avantages majeurs de GraphQL à l’état de l’art."
-* Netflix arrête le support de sa stack OSS pour supporter les outils Spring issus du fork de cette dernière (à checker, voir les Cast Codeurs 204)
+* *Kubernetes / Istio* comme concurrent de Spring et Microprofile
+* *Netflix arrête le support de sa stack OSS* pour supporter les outils Spring issus du fork de cette dernière (à checker, voir les Cast Codeurs 204)
 * Absolument parler de Quarkus qui va remplacer Thorntail, voir la note de Ken Finnigan du 11/04/2019 : https://thorntail.io/posts/thorntail-community-announcement-on-quarkus/
 
 == Dans l'absolu
@@ -789,7 +867,7 @@ Confère le livre Spring in action (voir pages annotées) : microservices comme 
 Sur ce point, voir l1 p6
 
 Pour une def d'applications *cloud native* (en comparaison à cloud ready), voir https://www.entando.com/page/en/what_is_the_difference_between_cloudready_and_cloudnative?contentId=BLG4585 +
-Autre très bonne ressource sur tout ce qui touche les applications cloud-native : le CNCF (*Cloud Native Computing Foundation*) Cloud Native Interactive Landscape (https://github.com/cncf/landscape et l'EXCELLENT https://landscape.cncf.io/) +
+Autre très bonne ressource sur tout ce qui touche les applications cloud-native : le CNCF (*Cloud Native Computing Foundation*) *Cloud Native Interactive Landscape* (https://github.com/cncf/landscape et l'*EXCELLENT* https://landscape.cncf.io/) -> Donne un panorama de toutes les techno pouvant être utilisées pour réaliser des applications cloud native
 Une autre très bonne def des applications cloud-native ici : https://medium.com/walmartlabs/cloud-native-application-architecture-a84ddf378f82 :
 
 ----
@@ -865,7 +943,10 @@ Voir comment créer une discussion entre nous à partir du slide "passage à la 
 
 * slide du capability model : augmenter la taille de police
 
+== INFO DIVERS
 
+Comme Node.js, Vert.x est une implémentation du design pattern reactor. +
+Reactor is a fourth-generation Reactive library for building non-blocking applications on the JVM based on the Reactive Streams Specification
 
 
 
