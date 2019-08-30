@@ -1,0 +1,45 @@
+= Microservices : un état des lieux
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 1
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+== Microservices : un rien d'histoire et quelques définitions
+
+On peut voir l’*architecture microservices* comme une évolution l’architecture *SOA* (Service Oriented Architecture), elle-même créée pour pallier aux inconvénients des *applications monolithiques*.
+
+image::microservices-etat-des-lieux_01.jpg[]
+
+* Un des points intéressants à remarquer dans la transition SOA vers l’architecture microservices, est la *suppression de l’ESB* (Enterprise Service Bus). +
+La communication entre les services devait être la principale fonction de ce composant, mais il embarquait fréquemment une *trop grande complexité métier*. +
+Pour corriger cela, il a été *remplacé par les endpoints REST des microservices*. +
+Pour illustrer ce changement, Martin Fowler palera de _"Smart endpoints and Dumb pipes"_
+
+* On constate également que l'on ne travaille plus avec un seul et unique runtime, mais avec *1 runtime par microservice*, ce qui participe à garantir une de leurs principales caractéristiques :  l'*isolation*.
+
+=== L'inspiration des microservices
+
+En 2005, Alistair Cockburn présentait l’*architecture hexagonale* (ou modèle *“Ports and Adapters”*) afin de permettre la conception d’applications pouvant être testées en *isolation de leurs runtimes et bases de données*.
+
+Cela a été l’inspiration pour l’architecture microservices, dont Alistair donna ensuite la définition suivante : _“An architectural style or an approach for building IT systems as a set of business capabilities that are autonomous, self contained, and loosely coupled”_
+
