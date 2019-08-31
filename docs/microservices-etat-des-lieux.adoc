@@ -28,7 +28,7 @@ toc::[]
 
 On peut voir l’*architecture microservices* comme une évolution l’architecture *SOA* (Service Oriented Architecture), elle-même créée pour pallier aux inconvénients des *applications monolithiques*.
 
-image::microservices-etat-des-lieux_01.jpg[]
+image:microservices-etat-des-lieux_01.jpg[]
 
 * Un des points intéressants à remarquer dans la transition SOA vers l’architecture microservices, est la *suppression de l’ESB* (Enterprise Service Bus). +
 La communication entre les services devait être la principale fonction de ce composant, mais il embarquait fréquemment une *trop grande complexité métier*. +
@@ -43,3 +43,18 @@ En 2005, Alistair Cockburn présentait l’*architecture hexagonale* (ou modèle
 
 Cela a été l’inspiration pour l’architecture microservices, dont Alistair donna ensuite la définition suivante : _“An architectural style or an approach for building IT systems as a set of business capabilities that are autonomous, self contained, and loosely coupled”_
 
+=== Architecture hexagonale
+
+image::microservices-etat-des-lieux_02.jpg[]
+
+IMPORTANT: Le principe fondateur de ce pattern est que [red]*le métier ne doit dépendre de rien* : TOUTES les dépendances vont de *l’extérieur vers l’intérieur*.
+
+Le but principal de cette architecture ne date pas d'hier, il est question de *séparer clairement le métier de l'implémentation technique*.
+
+* Tout ce qui se trouve à [red]*gauche de l'hexagone* représente [red]*les composants qui ont besoin de ce dernier*. +
+On trouve côté gauche des *interfaces exposées pour les composants ayant besoin d'invoquer le modèle*. On parle d'*API*, pour _Application Provider Interfaces_. +
+-> Les composants souhaitant communiquer avec notre métier le feront au travers d’*adaptateurs qui contacteront nos API*.
+
+* Tout ce qui se trouve à [red]*droite de l'hexagone* représente [red]*les composants dont ce dernier a besoin*. +
+On trouve côté droit des *interfaces exposées pour les composants que le modèle a besoin d’invoquer*. On parle de *SPI*, pour _Service Provider Interfaces_. +
+-> Les composants avec lesquels notre métier souhaite communiquer seront contactés au travers des *SPI dont les implémentations seront résolues à l’exécution et fournies par des adaptateurs*.

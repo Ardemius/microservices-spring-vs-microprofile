@@ -463,10 +463,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>On peut voir l’<strong>architecture microservices</strong> comme une évolution l’architecture <strong>SOA</strong> (Service Oriented Architecture), elle-même créée pour pallier aux inconvénients des <strong>applications monolithiques</strong>.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="./images/microservices-etat-des-lieux_01.jpg" alt="microservices etat des lieux 01">
-</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/microservices-etat-des-lieux_01.jpg" alt="microservices etat des lieux 01"></span></p>
 </div>
 <div class="ulist">
 <ul>
@@ -490,12 +488,49 @@ Pour illustrer ce changement, Martin Fowler palera de <em>"Smart endpoints and D
 <p>Cela a été l’inspiration pour l’architecture microservices, dont Alistair donna ensuite la définition suivante : <em>“An architectural style or an approach for building IT systems as a set of business capabilities that are autonomous, self contained, and loosely coupled”</em></p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_architecture_hexagonale">Architecture hexagonale</h3>
+<div class="imageblock">
+<div class="content">
+<img src="./images/microservices-etat-des-lieux_02.jpg" alt="microservices etat des lieux 02">
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Le principe fondateur de ce pattern est que <strong class="red">le métier ne doit dépendre de rien</strong> : TOUTES les dépendances vont de <strong>l’extérieur vers l’intérieur</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Le but principal de cette architecture ne date pas d&#8217;hier, il est question de <strong>séparer clairement le métier de l&#8217;implémentation technique</strong>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Tout ce qui se trouve à <strong class="red">gauche de l&#8217;hexagone</strong> représente <strong class="red">les composants qui ont besoin de ce dernier</strong>.<br>
+On trouve côté gauche des <strong>interfaces exposées pour les composants ayant besoin d&#8217;invoquer le modèle</strong>. On parle d'<strong>API</strong>, pour <em>Application Provider Interfaces</em>.<br>
+&#8594; Les composants souhaitant communiquer avec notre métier le feront au travers d’<strong>adaptateurs qui contacteront nos API</strong>.</p>
+</li>
+<li>
+<p>Tout ce qui se trouve à <strong class="red">droite de l&#8217;hexagone</strong> représente <strong class="red">les composants dont ce dernier a besoin</strong>.<br>
+On trouve côté droit des <strong>interfaces exposées pour les composants que le modèle a besoin d’invoquer</strong>. On parle de <strong>SPI</strong>, pour <em>Service Provider Interfaces</em>.<br>
+&#8594; Les composants avec lesquels notre métier souhaite communiquer seront contactés au travers des <strong>SPI dont les implémentations seront résolues à l’exécution et fournies par des adaptateurs</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-08-30 23:23:39 UTC
+Last updated 2019-08-31 23:33:28 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
