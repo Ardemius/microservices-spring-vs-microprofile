@@ -18,13 +18,13 @@ endif::[]
 :sb: pass:[<br>]
 // check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
 :toc: macro
-:toclevels: 1
+:toclevels: 2
 // To turn off figure caption labels and numbers
 :figure-caption!:
 
 toc::[]
 
-== Microservices : un rien d'histoire et quelques définitions
+== Microservices : un rien d'histoire et de contexte
 
 On peut voir l’*architecture microservices* comme une évolution l’architecture *SOA* (Service Oriented Architecture), elle-même créée pour pallier aux inconvénients des *applications monolithiques*.
 
@@ -37,13 +37,13 @@ Pour illustrer ce changement, Martin Fowler palera de _"Smart endpoints and Dumb
 
 * On constate également que l'on ne travaille plus avec un seul et unique runtime, mais avec *1 runtime par microservice*, ce qui participe à garantir une de leurs principales caractéristiques :  l'*isolation*.
 
-== L'inspiration des microservices
+=== L'inspiration des microservices
 
 En 2005, Alistair Cockburn présentait l’*architecture hexagonale* (ou modèle *“Ports and Adapters”*) afin de permettre la conception d’applications pouvant être testées en *isolation de leurs runtimes et bases de données*.
 
 Cela a été l’inspiration pour l’architecture microservices, dont Alistair donna ensuite la définition suivante : _“An architectural style or an approach for building IT systems as a set of business capabilities that are autonomous, self contained, and loosely coupled”_
 
-== Architecture hexagonale
+=== Architecture hexagonale
 
 image::microservices-etat-des-lieux_02.jpg[]
 
@@ -59,7 +59,7 @@ On trouve côté gauche des *interfaces exposées pour les composants ayant beso
 On trouve côté droit des *interfaces exposées pour les composants que le modèle a besoin d’invoquer*. On parle de *SPI*, pour _Service Provider Interfaces_. +
 -> Les composants avec lesquels notre métier souhaite communiquer seront contactés au travers des *SPI dont les implémentations seront résolues à l’exécution et fournies par des adaptateurs*.
 
-== Isolation
+=== Isolation
 
 image::microservices-etat-des-lieux_03.jpg[]
 
@@ -89,3 +89,27 @@ Ce qui fait pencher encore un peu plus la balance vers "l'isolation et redondanc
 
 Si vous voulez plus de détails sur ce point, je vous conseille l'excellente conférence https://www.youtube.com/watch?v=xZOO_CksS-E[Hexagonal at Scale, with DDD and microservices!] de Cyrille Martraire, lors du Voxxed Days Microservices Paris 2018.
 ====
+
+=== Pourquoi les microservices ?
+
+Du fait du développement d’Internet, tout le monde communique avec tout le monde, et est en concurrence avec tout le monde. +
+L’émergence des microservices est la conséquence de l’*évolution de nos applications* pour faire face à ces nouveaux besoins :
+
+* *Complexité croissante* +
+Les applications ne se limitent plus au seul data center de la compagnie, mais communiquent avec les services externes d’autres providers sur tout le globe.
+* *Besoin de livrer de plus en plus vite* +
+Quand la concurrence est partout, il faut pouvoir faire évoluer son produit rapidement, et donc être capable de livrer des nouvelles fonctionnalités au plus tôt, sans devoir attendre de release complète.
+* *Besoin de performance et de scalabilité* +
+Il faut être capable de s’adapter aux montées en charge d’un marché potentiellement mondial : très vite scaler sur de multiples serveurs, et libérer les ressources tout aussi vite quand le pic de charge est passé.
+* *Doivent être toujours disponibles* +
+Du fait de la compétition de plus en plus sauvage, si votre application tombe, votre client part chez le concurrent... Votre application doit être résiliente, et être capable de gérer les pannes (on parlera pour cela de _"Design for Failures"_).
+
+Pour adresser ces problématiques, des sociétés comme Netflix, Amazon, eBay commencèrent à *casser leurs monolithes* en services :
+
+* de petite taille, chacun ne remplissant qu’une fonction
+* pouvant être *déployés indépendamment* les uns des autres.
+
+Ces services *distribués*, *petits*, *simples* et *découplés* permirent aux applications de devenir *scalables*, *résilientes* et *flexibles*. +
+-> Ils prirent progressivement le nom de *microservices*.
+
+NOTE: La *découpe des applications monolithiques* en microservices est donc le *Use Case d’origine* des microservices.
