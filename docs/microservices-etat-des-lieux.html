@@ -453,6 +453,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toctitle" class="title">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_microservices_un_rien_dhistoire_et_quelques_définitions">Microservices : un rien d&#8217;histoire et quelques définitions</a></li>
+<li><a href="#_linspiration_des_microservices">L&#8217;inspiration des microservices</a></li>
+<li><a href="#_architecture_hexagonale">Architecture hexagonale</a></li>
+<li><a href="#_isolation">Isolation</a></li>
 </ul>
 </div>
 </div>
@@ -479,8 +482,11 @@ Pour illustrer ce changement, Martin Fowler palera de <em>"Smart endpoints and D
 </li>
 </ul>
 </div>
-<div class="sect2">
-<h3 id="_linspiration_des_microservices">L&#8217;inspiration des microservices</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_linspiration_des_microservices">L&#8217;inspiration des microservices</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>En 2005, Alistair Cockburn présentait l’<strong>architecture hexagonale</strong> (ou modèle <strong>“Ports and Adapters”</strong>) afin de permettre la conception d’applications pouvant être testées en <strong>isolation de leurs runtimes et bases de données</strong>.</p>
 </div>
@@ -488,8 +494,10 @@ Pour illustrer ce changement, Martin Fowler palera de <em>"Smart endpoints and D
 <p>Cela a été l’inspiration pour l’architecture microservices, dont Alistair donna ensuite la définition suivante : <em>“An architectural style or an approach for building IT systems as a set of business capabilities that are autonomous, self contained, and loosely coupled”</em></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_architecture_hexagonale">Architecture hexagonale</h3>
+</div>
+<div class="sect1">
+<h2 id="_architecture_hexagonale">Architecture hexagonale</h2>
+<div class="sectionbody">
 <div class="imageblock">
 <div class="content">
 <img src="./images/microservices-etat-des-lieux_02.jpg" alt="microservices etat des lieux 02">
@@ -508,7 +516,7 @@ Le principe fondateur de ce pattern est que <strong class="red">le métier ne do
 </table>
 </div>
 <div class="paragraph">
-<p>Le but principal de cette architecture ne date pas d&#8217;hier, il est question de <strong>séparer clairement le métier de l&#8217;implémentation technique</strong>.</p>
+<p>Le but principal de cette architecture ne date pas d&#8217;hier, il est question de <strong>séparer clairement le métier de l&#8217;implémentation technique</strong> (notion d'<strong>isolation</strong>).</p>
 </div>
 <div class="ulist">
 <ul>
@@ -526,11 +534,69 @@ On trouve côté droit des <strong>interfaces exposées pour les composants que 
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_isolation">Isolation</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="./images/microservices-etat-des-lieux_03.jpg" alt="microservices etat des lieux 03">
+</div>
+</div>
+<div class="paragraph">
+<p>Comme nous le verrons plus en détail par la suite, la notion d'<strong>isolation</strong> est capitale pour les microservices, or <strong>l&#8217;isolation amène la redondance</strong>, et cette dernière, on nous a appris à la "combattre" depuis des dizaines d&#8217;années.<br>
+Rappelez-vous le principe introduit dans <a href="https://www.amazon.fr/Pragmatic-Programmer-Journeyman-Master/dp/020161622X"><em>The Pragmatic Programmer</em></a> : <strong>Don&#8217;t Repeat Yourself (DRY)</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Prenons le cas de 2 classes partageant un même comportement.<br>
+Comme on nous l&#8217;a appris en programmation OO, on aura généralement tendance à sortir ce comportement commun dans une classe de plus haut niveau, qui sera ensuite héritée.<br>
+Si on change le comportement de la classe mère, on impacte donc les 2 classes filles.<br>
+Cet héritage a donc augmenté le couplage entre nos classes.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>L&#8217;exemple précédent est&#8230;&#8203; juste un exemple pour illustrer un problème classique de couplage 😅<br>
+On pourrait faire différemment, en utilisant la composition ou d&#8217;autres patterns (ne me tappez pas&#8230;&#8203; 😉)</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Dans le cas des microservices, nous voulons éviter un maximum tout couplage, afin que ces derniers soient le plus <strong>indépendants</strong> possible.
+Donc, entre <strong>DRY et couplage</strong>, et <strong class="red">isolution et redondance</strong>, la 2nd approche est privilégiée.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">DDD et redondance</div>
+<div class="paragraph">
+<p>La conception des microservices plébiscite l&#8217;approche <strong>DDD</strong> (<strong>Domain Driven Design</strong>).<br>
+Cette approche, tout particulièrement le découpage en <strong>bounded context</strong>, nous encourage très fortement à limiter le couplage, quitte à "se répéter" par moment.<br>
+Ce qui fait pencher encore un peu plus la balance vers "l&#8217;isolation et redondance".</p>
+</div>
+<div class="paragraph">
+<p>Si vous voulez plus de détails sur ce point, je vous conseille l&#8217;excellente conférence <a href="https://www.youtube.com/watch?v=xZOO_CksS-E">Hexagonal at Scale, with DDD and microservices!</a> de Cyrille Martraire, lors du Voxxed Days Microservices Paris 2018.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-08-31 23:33:28 UTC
+Last updated 2019-09-02 00:21:16 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">

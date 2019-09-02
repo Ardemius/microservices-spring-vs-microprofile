@@ -37,19 +37,19 @@ Pour illustrer ce changement, Martin Fowler palera de _"Smart endpoints and Dumb
 
 * On constate également que l'on ne travaille plus avec un seul et unique runtime, mais avec *1 runtime par microservice*, ce qui participe à garantir une de leurs principales caractéristiques :  l'*isolation*.
 
-=== L'inspiration des microservices
+== L'inspiration des microservices
 
 En 2005, Alistair Cockburn présentait l’*architecture hexagonale* (ou modèle *“Ports and Adapters”*) afin de permettre la conception d’applications pouvant être testées en *isolation de leurs runtimes et bases de données*.
 
 Cela a été l’inspiration pour l’architecture microservices, dont Alistair donna ensuite la définition suivante : _“An architectural style or an approach for building IT systems as a set of business capabilities that are autonomous, self contained, and loosely coupled”_
 
-=== Architecture hexagonale
+== Architecture hexagonale
 
 image::microservices-etat-des-lieux_02.jpg[]
 
 IMPORTANT: Le principe fondateur de ce pattern est que [red]*le métier ne doit dépendre de rien* : TOUTES les dépendances vont de *l’extérieur vers l’intérieur*.
 
-Le but principal de cette architecture ne date pas d'hier, il est question de *séparer clairement le métier de l'implémentation technique*.
+Le but principal de cette architecture ne date pas d'hier, il est question de *séparer clairement le métier de l'implémentation technique* (notion d'*isolation*).
 
 * Tout ce qui se trouve à [red]*gauche de l'hexagone* représente [red]*les composants qui ont besoin de ce dernier*. +
 On trouve côté gauche des *interfaces exposées pour les composants ayant besoin d'invoquer le modèle*. On parle d'*API*, pour _Application Provider Interfaces_. +
@@ -58,3 +58,34 @@ On trouve côté gauche des *interfaces exposées pour les composants ayant beso
 * Tout ce qui se trouve à [red]*droite de l'hexagone* représente [red]*les composants dont ce dernier a besoin*. +
 On trouve côté droit des *interfaces exposées pour les composants que le modèle a besoin d’invoquer*. On parle de *SPI*, pour _Service Provider Interfaces_. +
 -> Les composants avec lesquels notre métier souhaite communiquer seront contactés au travers des *SPI dont les implémentations seront résolues à l’exécution et fournies par des adaptateurs*.
+
+== Isolation
+
+image::microservices-etat-des-lieux_03.jpg[]
+
+Comme nous le verrons plus en détail par la suite, la notion d'*isolation* est capitale pour les microservices, or *l'isolation amène la redondance*, et cette dernière, on nous a appris à la "combattre" depuis des dizaines d'années. +
+Rappelez-vous le principe introduit dans https://www.amazon.fr/Pragmatic-Programmer-Journeyman-Master/dp/020161622X[_The Pragmatic Programmer_] : *Don't Repeat Yourself (DRY)*.
+
+Prenons le cas de 2 classes partageant un même comportement. +
+Comme on nous l'a appris en programmation OO, on aura généralement tendance à sortir ce comportement commun dans une classe de plus haut niveau, qui sera ensuite héritée. +
+Si on change le comportement de la classe mère, on impacte donc les 2 classes filles. +
+Cet héritage a donc augmenté le couplage entre nos classes.
+
+[NOTE]
+====
+L'exemple précédent est... juste un exemple pour illustrer un problème classique de couplage 😅 +
+On pourrait faire différemment, en utilisant la composition ou d'autres patterns (ne me tappez pas... 😉)
+====
+
+Dans le cas des microservices, nous voulons éviter un maximum tout couplage, afin que ces derniers soient le plus *indépendants* possible.
+Donc, entre *DRY et couplage*, et [red]*isolution et redondance*, la 2nd approche est privilégiée.
+
+.DDD et redondance
+[NOTE]
+====
+La conception des microservices plébiscite l'approche *DDD* (*Domain Driven Design*). +
+Cette approche, tout particulièrement le découpage en *bounded context*, nous encourage très fortement à limiter le couplage, quitte à "se répéter" par moment. +
+Ce qui fait pencher encore un peu plus la balance vers "l'isolation et redondance".
+
+Si vous voulez plus de détails sur ce point, je vous conseille l'excellente conférence https://www.youtube.com/watch?v=xZOO_CksS-E[Hexagonal at Scale, with DDD and microservices!] de Cyrille Martraire, lors du Voxxed Days Microservices Paris 2018.
+====
