@@ -113,3 +113,18 @@ Ces services *distribués*, *petits*, *simples* et *découplés* permirent aux a
 -> Ils prirent progressivement le nom de *microservices*.
 
 NOTE: La *découpe des applications monolithiques* en microservices est donc le *Use Case d’origine* des microservices.
+
+== Principaux Use Cases
+
+* "L’originel (le passé)" : Migration d’un monolithe vers une architecture microservices
+* "L’actuel (le présent)" : Développement d’applications *cloud-native*
+
+La transition aux applications Cloud-native est bien expliquée dans le https://www.amazon.fr/Spring-Microservices-Action-John-Carnell/dp/1617293989[Spring Microservices in Action] p5 :
+
+____
+You *start* building microservices because they give you a *high degree of flexibility and autonomy* with your development teams, but you and your team quickly find that the *small, independent nature of microservices makes them easily deployable to the cloud*.
+____
+
+
+
+
