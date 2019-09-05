@@ -460,7 +460,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_pourquoi_les_microservices">Pourquoi les microservices ?</a></li>
 </ul>
 </li>
-<li><a href="#_principaux_use_cases">Principaux Use Cases</a></li>
+<li><a href="#_principaux_use_cases">Principaux Use Cases</a>
+<ul class="sectlevel2">
+<li><a href="#_approche_cloud_native">Approche Cloud-native</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -535,7 +539,7 @@ On trouve côté droit des <strong>interfaces exposées pour les composants que 
 </div>
 <div class="sect2">
 <h3 id="_isolation">Isolation</h3>
-<div class="imageblock">
+<div class="imageblock text-center">
 <div class="content">
 <img src="./images/microservices-etat-des-lieux_03.jpg" alt="microservices etat des lieux 03">
 </div>
@@ -671,12 +675,81 @@ La <strong>découpe des applications monolithiques</strong> en microservices est
 </div>
 </blockquote>
 </div>
+<div class="sect2">
+<h3 id="_approche_cloud_native">Approche Cloud-native</h3>
+<div class="imageblock">
+<div class="content">
+<img src="./images/microservices-etat-des-lieux_04.jpg" alt="microservices etat des lieux 04">
+</div>
+<div class="title">Cloud-Native approach : <a href="https://pivotal.io/fr/cloud-native" class="bare">https://pivotal.io/fr/cloud-native</a></div>
+</div>
+<div class="paragraph">
+<p>Les microservices sont maintenant l’<strong>architecture "par défaut"</strong> pour bâtir des applications Cloud-native.</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;approche Cloud-native a les grandes caractéristiques suivantes :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Architecture microservices</strong> : implique de <strong>multiples équipes indépendates</strong>, travaillant à l&#8217;amélioration du système.</p>
+</li>
+<li>
+<p><strong>Continuous Delivery</strong> : Le CD représente un <strong>process d&#8217;automatisation</strong> permettant aux développeurs de <strong>déployer rapidement</strong> vers les environnements de prodution</p>
+</li>
+<li>
+<p><strong>DevOps</strong> : La culture DevOps rapproche développeurs et OPs, et les aide à livrer une meilleure <strong>valeur partagée</strong> au client.</p>
+</li>
+<li>
+<p><strong>Containerized</strong> : La notion de container est capitale, car ce sont ces derniers qui permettent aux applications de pouvoir être déployées <strong>n&#8217;importe où</strong>.<br>
+Ce qui importe n&#8217;est pas OU ces dernières sont déployées, mais COMMENT elles le sont.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Voici une définition de l&#8217;approche Cloud-native que j&#8217;aime particulièrement :</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Cloud native is an approach for building applications as micro-services and <strong>running</strong> them on a <strong>containerised and dynamically orchestrated platforms</strong> that <strong>fully exploits the advantages of the Cloud computing model</strong>.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://medium.com/walmartlabs/cloud-native-application-architecture-a84ddf378f82">Cloud Native Application Architecture</a>
+</div>
+</div>
+<div class="paragraph">
+<p>On y parle d&#8217;exploiter les avantages qu&#8217;offre la conception dans le Cloud, afin de répondre aux nombreuses contraintes inhérentes au développement de microservices.<br>
+En effet, le développement de ces derniers est complexe, principalement car <strong>ils sont nombreux</strong>.<br>
+On ne développe jamais un mais <strong>DES</strong> microservices, dont il faut assurer la communication, le cycle de vie, le monitoring, etc etc.
+Tout cela nécessite la mise en place d&#8217;un <strong>environnement complexe</strong>, on parlera de <strong class="red">capability model</strong>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ce terme de <strong>capability model</strong> n&#8217;est pas si courant dans la littérature sur les microservices, mais je le trouve très approprié.<br>
+La gestion des logs, le monitoring centralisé, la découverte des services, etc. sont autant de "capabilities" qu&#8217;il est nécessaire de mettre en place pour assurer le bon fonctionnement de nos microservices.</p>
+</div>
+<div class="paragraph">
+<p>A la base, je l&#8217;ai trouvé dans l&#8217;excellent article <a href="https://hub.packtpub.com/capability-model-microservices/">A capability model for microservices</a> de Rajesh RV, l&#8217;auteur de <a href="https://www.packtpub.com/application-development/spring-microservices">Spring Microservices</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-09-03 00:01:26 UTC
+Last updated 2019-09-05 01:01:48 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
