@@ -465,7 +465,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_approche_cloud_native">Approche Cloud-native</a></li>
 </ul>
 </li>
+<li><a href="#_capability_model">Capability model</a></li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Cet article se base sur le talk <a href="https://www.youtube.com/watch?v=2VH8rQSKdk0">Microservices: Infinity War! Spring vs MicroProfile</a> que j&#8217;ai donné à <strong>Devoxx France 2019</strong> avec ma collègue Darren Boutros.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -571,7 +584,7 @@ On pourrait faire différemment, en utilisant la composition ou d&#8217;autres p
 </div>
 <div class="paragraph">
 <p>Dans le cas des microservices, nous voulons éviter un maximum tout couplage, afin que ces derniers soient le plus <strong>indépendants</strong> possible.
-Donc, entre <strong>DRY et couplage</strong>, et <strong class="red">isolution et redondance</strong>, la 2nd approche est privilégiée.</p>
+Donc, entre <strong>DRY et couplage</strong>, et <strong class="red">isolation et redondance</strong>, la 2nd approche est privilégiée.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -746,10 +759,25 @@ La gestion des logs, le monitoring centralisé, la découverte des services, etc
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_capability_model">Capability model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La conception de microservices ne se limite pas au simple code du service lui-même, l&#8217;environnement, la <strong>capability model</strong> comme nommé précédemment, est essentiel.</p>
+</div>
+<div class="videoblock">
+<div class="content">
+<video src="./images/microservices-etat-des-lieux_05.mp4#t=0,10" width="1000" autoplay controls>
+Your browser does not support the video tag.
+</video>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-09-05 01:01:48 UTC
+Last updated 2019-09-07 23:53:01 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">

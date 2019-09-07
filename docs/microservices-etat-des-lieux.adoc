@@ -24,6 +24,8 @@ endif::[]
 
 toc::[]
 
+NOTE: Cet article se base sur le talk https://www.youtube.com/watch?v=2VH8rQSKdk0[Microservices: Infinity War! Spring vs MicroProfile] que j'ai donné à *Devoxx France 2019* avec ma collègue Darren Boutros.
+
 == Microservices : un rien d'histoire et de contexte
 
 On peut voir l’*architecture microservices* comme une évolution l’architecture *SOA* (Service Oriented Architecture), elle-même créée pour pallier aux inconvénients des *applications monolithiques*.
@@ -78,7 +80,7 @@ On pourrait faire différemment, en utilisant la composition ou d'autres pattern
 ====
 
 Dans le cas des microservices, nous voulons éviter un maximum tout couplage, afin que ces derniers soient le plus *indépendants* possible.
-Donc, entre *DRY et couplage*, et [red]*isolution et redondance*, la 2nd approche est privilégiée.
+Donc, entre *DRY et couplage*, et [red]*isolation et redondance*, la 2nd approche est privilégiée.
 
 .DDD et redondance
 [NOTE]
@@ -160,5 +162,9 @@ La gestion des logs, le monitoring centralisé, la découverte des services, etc
 A la base, je l'ai trouvé dans l'excellent article https://hub.packtpub.com/capability-model-microservices/[A capability model for microservices] de Rajesh RV, l'auteur de https://www.packtpub.com/application-development/spring-microservices[Spring Microservices].
 ====
 
+== Capability model
 
+La conception de microservices ne se limite pas au simple code du service lui-même, l'environnement, la *capability model* comme nommé précédemment, est essentiel.
+
+video::microservices-etat-des-lieux_05.mp4[width=1000, start=0, end=10, options=autoplay]
 
