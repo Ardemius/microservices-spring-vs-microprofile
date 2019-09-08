@@ -164,7 +164,118 @@ A la base, je l'ai trouvé dans l'excellent article https://hub.packtpub.com/cap
 
 == Capability model
 
-La conception de microservices ne se limite pas au simple code du service lui-même, l'environnement, la *capability model* comme nommé précédemment, est essentiel.
+La conception de microservices ne se limite pas au simple code du service lui-même, l'environnement, le *capability model* comme nommé précédemment, est essentiel.
+
+Faisons apparaître ses "capabilities" progressivement :
 
 video::microservices-etat-des-lieux_05.mp4[width=1000, start=0, end=10, options=autoplay]
+
+=== Microservice "core"
+
+Nous commençons par le codage d'un premier microservice, qui, techniquement, n'est qu'un service "classique".
+L'une de ses principales caractéristiques est de disposer d'une *persistance dédiée*.
+
+=== API
+
+Ce dernier va très rapidement devoir communiquer avec d'autres microservices, ce qui se fera au travers d'*API*.
+
+=== Service Discovery
+
+Afin que nos microservices puissent se trouver les uns les autres, ils s’enregistrent auprès d’un *Service Discovery*.
+
+=== Load Balancer
+
+Dès lor que vous avez *plusieurs instances d'un même microservice*, vous avez besoin d'un *Load Balancer* pour distribuer le trafic et la charge.
+
+=== API gateway
+
+Il faut proposer un *point d'entrée unique* pour tous vos services. +
+C'est le rôle L'*API gateway*, qui, de ce fait, est également le lieu idéal pour implémenter certains aspects transverses comme le *routage statique* et le *routage dynamique*. +
+Par exemple, en fonction de certaines données de la requête arrivante, on dirige une population de beta-testeurs sur une version spécifique de certains services.
+
+=== Communication entre microservices
+
+Les microservices peuvent communiquer / être appelés de 2 façons différentes, *synchrone* ou *asynchrone*.
+
+==== Synchrone
+
+Implémentée au travers d'*appel REST en HTTP*.
+
+Ce type de communication est généralement privilégié pour des *services externes*. +
+Il est en effet idéal pour des requêtes externes, car permettant de gérer facilement les *intéractions temps-réel* avec un client. +
+Néanmoins, son *inconvénient* est d'*augmenter le couplage* entre 2 microservices.
+
+==== Asynchrone
+
+Communication *Event Driven*, implémentée via la mise en place d'un *bus d'évènements* (protocoles d'envoi de messages asynchrones AMQP, STOMP, MQTT et outils comme RabbitMQ, ActiveMQ), ou d'un *mécanisme de Pub/Sub* (*Kafka* est le roi incontesté de ce domaine...).
+
+Ce type de communication est privilégié pour les échanges relatif à la "mécanique interne" d'une fonctionnalité rendue par un ensemble de microservices (en d'autres termes, la "plomberie", ce qui n'est pas exposé au client) +
+Dans ces cas, le client n'attend généralement pas de réponse immédiate, voire n'en attend tout simplement pas. +
+Ces échanges étant plus répandus que les besoins d'intéractions temps réel, la communication asynchrone est la plus fréquemment rencontrée pour les microservices.
+
+Ses avantages sont :
+
+* *meilleur découplage* des microservices
++
+WARNING: Attention toutefois, on peut devenir dépendant (donc re-couplage) de la version du type de message. +
+Exemple: JSON ne supporte pas nativement le versioning, contrairement à Avro (poussé par Kafka)
+* *meilleure résilience* : le message reste dans la queue même si le consommateur est down.
+* *meilleure scalabilité* : pas besoin d'attendre une réponse du consommateur du message.
+* *meilleure flexibilité* : émetteur et consommateur ne se connaissent pas, on peut donc ajouter de nouveaux consommateurs sans impacter l’émetteur.
+
+Côté inconvénients :
+
+* il faut se méfier de la gestion de l'*ordre des messages*.
+* *debugging plus compliqué* : l'exécution n'étant plus linéaire.
+
+=== Configuration management
+
+Vos microservices étant nombreux, vous n'allez pas gérer la configuration de chacun d'eux séparemment, il va donc falloir *centraliser leur configuration*.
+
+=== Design for failure
+
+Les microservices sont des systèmes distribués, pour éviter tout problème de réseau, ou que la défaillance d’un service (ou instance de service) n’impacte les autres, vous devez penser à la résilience de l’application dès sa conception, ce qu’on appelle le *Design for failure*.
+
+Voici les principaux patterns à mettre en place :
+
+* *circuit breaker* : pour éviter que l’on continue d’appeler un microservice défaillant, permet le *fail fast*.
+* *fallback* : propose un comportement alternatif en cas de défaillance d’un microservice (exemples : accès à une autre source de données, queueing de la requête, etc.)
+* *bulkhead* : on sépare les appels aux ressources distantes dans des thread pools différents (pour éviter qu’un service défaillant ne vampirise les ressources)
+
+=== Logging et tracing
+
+Notre bon vieux monolithe a cédé la place à plusieurs dizaines ou centaines de microservices, en conséquence, la gestion des logs et du tracing est devenue bien plus compliquée.
+
+Chaque microservice a ses propres logs, et une transaction utilisateur peut impliquer plusieurs de ces derniers. +
+Les patterns suivants permettent de ne pas se noyer dans cette masse de données :
+
+* *log correlation* : via un *ID de corrélation*, permet de suivre les logs d’une transaction entre différents services
+* *log aggregation* : regroupe toutes les logs en 1 même persistance
+* *tracing distribué* : permet de visualiser le flux / workflow d’une transaction utilisateur au travers des différents microservices
+
+=== Sécurité
+
+* *Authentification* : permet de savoir QUI veut se connecter à vos services
+* *Autorisation* : permet de savoir si l'utilisateur, précédemment authentifié, a bien le droit d'entreprendre l'action qu'il souhaite (gestion de droits)
+* *Délégation d’accès* : pour éviter que le service client n’ait systématiquement à représenter ses credentials pour chacun des services impliqués dans la transaction
+
+=== Patterns de build et de déploiement
+
+Nos microservices sont nombreux, on ne va pas pouvoir chacun les déployer, ou les redémarrer (gestion de panne), "à la main", d'où la mise en place des patterns suivants :
+
+* *CI/CD* : implique la mise en place d'un pipeline de build et de déploiement automatisé.
+* *Infrastructure as code* : permet de considérer le provisioning des nos services comme du code pouvant être géré par un gestionnaire de sources.
+* *Immutable infrastructure* : Une fois qu'un service est déployé, l'infrastructure sur laquelle il tourne ne doit plus pouvoir être modifiée par un humain. +
+Cela renforce la stabilité du système, en garantissant qu'aucune modification ne peut se retrouver en PROD, dans le code déployé, mais nulle part ailleurs...
+
+
+
+
+
+
+
+
+
+
+
 

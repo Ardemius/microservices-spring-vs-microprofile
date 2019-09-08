@@ -465,7 +465,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_approche_cloud_native">Approche Cloud-native</a></li>
 </ul>
 </li>
-<li><a href="#_capability_model">Capability model</a></li>
+<li><a href="#_capability_model">Capability model</a>
+<ul class="sectlevel2">
+<li><a href="#_microservice_core">Microservice "core"</a></li>
+<li><a href="#_api">API</a></li>
+<li><a href="#_service_discovery">Service Discovery</a></li>
+<li><a href="#_load_balancer">Load Balancer</a></li>
+<li><a href="#_api_gateway">API gateway</a></li>
+<li><a href="#_communication_entre_microservices">Communication entre microservices</a></li>
+<li><a href="#_configuration_management">Configuration management</a></li>
+<li><a href="#_design_for_failure">Design for failure</a></li>
+<li><a href="#_logging_et_tracing">Logging et tracing</a></li>
+<li><a href="#_sécurité">Sécurité</a></li>
+<li><a href="#_patterns_de_build_et_de_déploiement">Patterns de build et de déploiement</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="admonitionblock note">
@@ -763,7 +777,10 @@ La gestion des logs, le monitoring centralisé, la découverte des services, etc
 <h2 id="_capability_model">Capability model</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>La conception de microservices ne se limite pas au simple code du service lui-même, l&#8217;environnement, la <strong>capability model</strong> comme nommé précédemment, est essentiel.</p>
+<p>La conception de microservices ne se limite pas au simple code du service lui-même, l&#8217;environnement, le <strong>capability model</strong> comme nommé précédemment, est essentiel.</p>
+</div>
+<div class="paragraph">
+<p>Faisons apparaître ses "capabilities" progressivement :</p>
 </div>
 <div class="videoblock">
 <div class="content">
@@ -772,12 +789,205 @@ Your browser does not support the video tag.
 </video>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_microservice_core">Microservice "core"</h3>
+<div class="paragraph">
+<p>Nous commençons par le codage d&#8217;un premier microservice, qui, techniquement, n&#8217;est qu&#8217;un service "classique".
+L&#8217;une de ses principales caractéristiques est de disposer d&#8217;une <strong>persistance dédiée</strong>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_api">API</h3>
+<div class="paragraph">
+<p>Ce dernier va très rapidement devoir communiquer avec d&#8217;autres microservices, ce qui se fera au travers d'<strong>API</strong>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_service_discovery">Service Discovery</h3>
+<div class="paragraph">
+<p>Afin que nos microservices puissent se trouver les uns les autres, ils s’enregistrent auprès d’un <strong>Service Discovery</strong>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_load_balancer">Load Balancer</h3>
+<div class="paragraph">
+<p>Dès lor que vous avez <strong>plusieurs instances d&#8217;un même microservice</strong>, vous avez besoin d&#8217;un <strong>Load Balancer</strong> pour distribuer le trafic et la charge.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_api_gateway">API gateway</h3>
+<div class="paragraph">
+<p>Il faut proposer un <strong>point d&#8217;entrée unique</strong> pour tous vos services.<br>
+C&#8217;est le rôle L'<strong>API gateway</strong>, qui, de ce fait, est également le lieu idéal pour implémenter certains aspects transverses comme le <strong>routage statique</strong> et le <strong>routage dynamique</strong>.<br>
+Par exemple, en fonction de certaines données de la requête arrivante, on dirige une population de beta-testeurs sur une version spécifique de certains services.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_communication_entre_microservices">Communication entre microservices</h3>
+<div class="paragraph">
+<p>Les microservices peuvent communiquer / être appelés de 2 façons différentes, <strong>synchrone</strong> ou <strong>asynchrone</strong>.</p>
+</div>
+<div class="sect3">
+<h4 id="_synchrone">Synchrone</h4>
+<div class="paragraph">
+<p>Implémentée au travers d'<strong>appel REST en HTTP</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Ce type de communication est généralement privilégié pour des <strong>services externes</strong>.<br>
+Il est en effet idéal pour des requêtes externes, car permettant de gérer facilement les <strong>intéractions temps-réel</strong> avec un client.<br>
+Néanmoins, son <strong>inconvénient</strong> est d'<strong>augmenter le couplage</strong> entre 2 microservices.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_asynchrone">Asynchrone</h4>
+<div class="paragraph">
+<p>Communication <strong>Event Driven</strong>, implémentée via la mise en place d&#8217;un <strong>bus d&#8217;évènements</strong> (protocoles d&#8217;envoi de messages asynchrones AMQP, STOMP, MQTT et outils comme RabbitMQ, ActiveMQ), ou d&#8217;un <strong>mécanisme de Pub/Sub</strong> (<strong>Kafka</strong> est le roi incontesté de ce domaine&#8230;&#8203;).</p>
+</div>
+<div class="paragraph">
+<p>Ce type de communication est privilégié pour les échanges relatif à la "mécanique interne" d&#8217;une fonctionnalité rendue par un ensemble de microservices (en d&#8217;autres termes, la "plomberie", ce qui n&#8217;est pas exposé au client)<br>
+Dans ces cas, le client n&#8217;attend généralement pas de réponse immédiate, voire n&#8217;en attend tout simplement pas.<br>
+Ces échanges étant plus répandus que les besoins d&#8217;intéractions temps réel, la communication asynchrone est la plus fréquemment rencontrée pour les microservices.</p>
+</div>
+<div class="paragraph">
+<p>Ses avantages sont :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>meilleur découplage</strong> des microservices</p>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Attention toutefois, on peut devenir dépendant (donc re-couplage) de la version du type de message.<br>
+Exemple: JSON ne supporte pas nativement le versioning, contrairement à Avro (poussé par Kafka)
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><strong>meilleure résilience</strong> : le message reste dans la queue même si le consommateur est down.</p>
+</li>
+<li>
+<p><strong>meilleure scalabilité</strong> : pas besoin d&#8217;attendre une réponse du consommateur du message.</p>
+</li>
+<li>
+<p><strong>meilleure flexibilité</strong> : émetteur et consommateur ne se connaissent pas, on peut donc ajouter de nouveaux consommateurs sans impacter l’émetteur.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Côté inconvénients :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>il faut se méfier de la gestion de l'<strong>ordre des messages</strong>.</p>
+</li>
+<li>
+<p><strong>debugging plus compliqué</strong> : l&#8217;exécution n&#8217;étant plus linéaire.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuration_management">Configuration management</h3>
+<div class="paragraph">
+<p>Vos microservices étant nombreux, vous n&#8217;allez pas gérer la configuration de chacun d&#8217;eux séparemment, il va donc falloir <strong>centraliser leur configuration</strong>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_design_for_failure">Design for failure</h3>
+<div class="paragraph">
+<p>Les microservices sont des systèmes distribués, pour éviter tout problème de réseau, ou que la défaillance d’un service (ou instance de service) n’impacte les autres, vous devez penser à la résilience de l’application dès sa conception, ce qu’on appelle le <strong>Design for failure</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Voici les principaux patterns à mettre en place :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>circuit breaker</strong> : pour éviter que l’on continue d’appeler un microservice défaillant, permet le <strong>fail fast</strong>.</p>
+</li>
+<li>
+<p><strong>fallback</strong> : propose un comportement alternatif en cas de défaillance d’un microservice (exemples : accès à une autre source de données, queueing de la requête, etc.)</p>
+</li>
+<li>
+<p><strong>bulkhead</strong> : on sépare les appels aux ressources distantes dans des thread pools différents (pour éviter qu’un service défaillant ne vampirise les ressources)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_logging_et_tracing">Logging et tracing</h3>
+<div class="paragraph">
+<p>Notre bon vieux monolithe a cédé la place à plusieurs dizaines ou centaines de microservices, en conséquence, la gestion des logs et du tracing est devenue bien plus compliquée.</p>
+</div>
+<div class="paragraph">
+<p>Chaque microservice a ses propres logs, et une transaction utilisateur peut impliquer plusieurs de ces derniers.<br>
+Les patterns suivants permettent de ne pas se noyer dans cette masse de données :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>log correlation</strong> : via un <strong>ID de corrélation</strong>, permet de suivre les logs d’une transaction entre différents services</p>
+</li>
+<li>
+<p><strong>log aggregation</strong> : regroupe toutes les logs en 1 même persistance</p>
+</li>
+<li>
+<p><strong>tracing distribué</strong> : permet de visualiser le flux / workflow d’une transaction utilisateur au travers des différents microservices</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sécurité">Sécurité</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Authentification</strong> : permet de savoir QUI veut se connecter à vos services</p>
+</li>
+<li>
+<p><strong>Autorisation</strong> : permet de savoir si l&#8217;utilisateur, précédemment authentifié, a bien le droit d&#8217;entreprendre l&#8217;action qu&#8217;il souhaite (gestion de droits)</p>
+</li>
+<li>
+<p><strong>Délégation d’accès</strong> : pour éviter que le service client n’ait systématiquement à représenter ses credentials pour chacun des services impliqués dans la transaction</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_patterns_de_build_et_de_déploiement">Patterns de build et de déploiement</h3>
+<div class="paragraph">
+<p>Nos microservices sont nombreux, on ne va pas pouvoir chacun les déployer, ou les redémarrer (gestion de panne), "à la main", d&#8217;où la mise en place des patterns suivants :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>CI/CD</strong> : implique la mise en place d&#8217;un pipeline de build et de déploiement automatisé.</p>
+</li>
+<li>
+<p><strong>Infrastructure as code</strong> : permet de considérer le provisioning des nos services comme du code pouvant être géré par un gestionnaire de sources.</p>
+</li>
+<li>
+<p><strong>Immutable infrastructure</strong> : Une fois qu&#8217;un service est déployé, l&#8217;infrastructure sur laquelle il tourne ne doit plus pouvoir être modifiée par un humain.<br>
+Cela renforce la stabilité du système, en garantissant qu&#8217;aucune modification ne peut se retrouver en PROD, dans le code déployé, mais nulle part ailleurs&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-09-07 23:53:01 UTC
+Last updated 2019-09-08 21:34:35 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
