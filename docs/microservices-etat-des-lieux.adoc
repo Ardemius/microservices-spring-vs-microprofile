@@ -1,5 +1,6 @@
 = Microservices : un état des lieux
-Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>; Softeam Group <https://softeamgroup.fr[]>
+v1.0, 31/08/2019
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
 ifdef::env-github[]
@@ -79,7 +80,7 @@ L'exemple précédent est... juste un exemple pour illustrer un problème classi
 On pourrait faire différemment, en utilisant la composition ou d'autres patterns (ne me tappez pas... 😉)
 ====
 
-Dans le cas des microservices, nous voulons éviter un maximum tout couplage, afin que ces derniers soient le plus *indépendants* possible.
+Dans le cas des microservices, nous voulons éviter au maximum tout couplage, afin que ces derniers soient le plus *indépendants* possible.
 Donc, entre *DRY et couplage*, et [red]*isolation et redondance*, la 2nd approche est privilégiée.
 
 .DDD et redondance
@@ -172,8 +173,12 @@ video::microservices-etat-des-lieux_05.mp4[width=1000, start=0, end=10, options=
 
 === Microservice "core"
 
-Nous commençons par le codage d'un premier microservice, qui, techniquement, n'est qu'un service "classique".
-L'une de ses principales caractéristiques est de disposer d'une *persistance dédiée*.
+Rappelons les caractéristiques des microservices :
+
+* *"petits"* : comprendre par là qu'ils n'assurent la responsabilité que d'un point précis d'un domaine métier.
+* *faiblement couplés* : donc indépendants, et devant être *déployés indépendamment les uns des autres*. +
+Pour aider à cela, il est préconisé que chaque microservice dispose d'une *persistance dédiée*.
+* *distribués*
 
 === API
 
@@ -195,7 +200,9 @@ Par exemple, en fonction de certaines données de la requête arrivante, on diri
 
 === Communication entre microservices
 
-Les microservices peuvent communiquer / être appelés de 2 façons différentes, *synchrone* ou *asynchrone*.
+Les microservices communiquent entre eux avec un *protocole léger* et *indépendant de leur technologie*.
+
+la communication peut être *synchrone* ou *asynchrone*.
 
 ==== Synchrone
 
@@ -268,11 +275,37 @@ Nos microservices sont nombreux, on ne va pas pouvoir chacun les déployer, ou l
 * *Immutable infrastructure* : Une fois qu'un service est déployé, l'infrastructure sur laquelle il tourne ne doit plus pouvoir être modifiée par un humain. +
 Cela renforce la stabilité du système, en garantissant qu'aucune modification ne peut se retrouver en PROD, dans le code déployé, mais nulle part ailleurs...
 
+== Implémentation de microservices
 
+Plusieurs stack techniques peuvent être utilisées pour créer nos microservices, et mettre en place le capability model associé. +
+Les plus connues sont *Spring* et *MicroProfile*.
 
+=== Stack Spring
 
+Au sein de l'écosystème Spring, les projets Boot et Cloud sont ceux permettant d'implémenter des microservices.
 
+==== Spring Boot
 
+Le but de *Spring Boot* est de simplifier la création de microservices *orientés REST / JSON*. +
+Il permet de créer ceux-ci simplement, au travers d'*annotations*. +
+La configuration du build est facilitée via le *regroupement des dépendances* au sein de "*starters*" spécifiques (`spring-boot-starter-web`, `spring-boot-starter-data-jpa`, etc.).
+
+Spring Boot crée des *applications stand-alone*, ne nécessitant pas d'être lancées au travers d'un serveur d'applications "externe", car *embarquant leur propre serveur* (Tomcat, Jetty, Undertow). +
+On parlera d'*Uber jars*.
+
+==== Spring Cloud
+
+Le projet Spring Cloud *encapsule plusieurs frameworks populaires*, assurant des fonctionnalités du capability model des microservices, au sein d'un framework commun. On parle de projet parapluie (*"Umbrella" project*) +
+Celui-ci permet de faciliter l'usage et le déploiement de ces technologies, et de les rendre accessibles au travers de simples annotations.
+
+Parmi les projets composant Spring Cloud, on peut citer :
+
+* *Spring Cloud Netflix* : intègre la suite Netflix OSS (Zuul, Eureka, Ribbon, Hystrix, etc.)
+* *Spring Cloud Consul* : intègre Hashicorp Consul (service discovery)
+* *Spring Cloud Sleuth* : tracing distribué via l’ajout d’un ID de corrélation
+* *Spring Cloud Security* : framework d’authentification et d’autorisation (OAuth2)
+* *Spring Cloud Stream* : framework facilitant l’intégration de brokers de message (RabbitMQ, Kafka) pour la communication asynchrone.
+* et https://spring.io/projects/spring-cloud[bien d'autres encore]
 
 
 
