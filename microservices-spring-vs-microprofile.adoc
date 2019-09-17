@@ -2,7 +2,7 @@
 
 Spring Microservices vs MicroProfile JEE
 
-== Darren : 
+== Darren :
 
 Voilà la liste des link :
 
@@ -86,7 +86,7 @@ The common work of a developper is to:
 * monitor
 * scale their application
 
-As this can be complex, they generally do rely on frameworks to ease those steps. 
+As this can be complex, they generally do rely on frameworks to ease those steps.
 
 When working with Java, *JEE* and *Spring* and 2 common ones
 
@@ -149,7 +149,7 @@ In most cases, services in SOA are independent from each other, yet they are dep
 
 * *disposable*
 
-The need of *failing fast* 
+The need of *failing fast*
 
 To guarantee those last, a classic technical stack emerged around the following component:
 
@@ -195,7 +195,8 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 * Eclipse MicroProfile :
 	** cette suite d'articles d'Eclipse.org, traitent également de l'env tech autour des microservices : https://www.eclipse.org/community/eclipse_newsletter/2017/september/
 	** Red Hat's implementation of Eclipse MicroProfile, WildFly Swarm, has been renamed to *Thorntail*.
-	** Eclipse MicroProfile Releases and associated implementation: https://wiki.eclipse.org/MicroProfile/Implementation
+	** Eclipse MicroProfile Releases and associated implementation: https://wiki.eclipse.org/MicroProfile/Implementation +
+	-> Ce site indique également les implémentations ayant passé le TCK de MicroProfile
 	** Here comes *SmallRye*, a shared Eclipse MicroProfile implementation: https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-hat-update-thorntail-and-smallrye/
 	** dev "core" de microservices avec MicroProfile (sans l'env tech adjacent) : https://www.baeldung.com/eclipse-microprofile
 
@@ -251,7 +252,7 @@ Voir https://developers.redhat.com/blog/2018/08/23/eclipse-microprofile-and-red-
 			Docker pour tester facilement l’ensemble de l’architecture localement, et pour passer en production
 			----
 
-		**** (WS1) Microservices en Java (Java EE) : https://www.oxiane.com/wp-content/uploads/2018/06/Voxxed-Microservices-2018-Programme-Formation-WS1-Jakarta-EE.pdf 
+		**** (WS1) Microservices en Java (Java EE) : https://www.oxiane.com/wp-content/uploads/2018/06/Voxxed-Microservices-2018-Programme-Formation-WS1-Jakarta-EE.pdf
 
 			----
 			Architecture microservices
@@ -320,7 +321,7 @@ Microservices are about decomposition, but giving each component a high degree o
 
 This link also explains the importance of *failing fast*
 
-* Parlez de CQRS / ES, et donc prévoir quelques mots sur *Axon framework*. 
+* Parlez de CQRS / ES, et donc prévoir quelques mots sur *Axon framework*.
 
 * Il faudra peut-être (en fait, *SUREMENT*) également commencer par dire 2 mots sur la comparaison entre plateforme, comme *Istio*, et frameworks, comme *Spring* et *MicroProfile*, pour l'env tech des microservices. +
 A ce sujet, voir la prez à Devoxx UK 2018 de Kate Stanley & Adam Pilkington (IBM) : https://www.youtube.com/watch?v=lFj8X0VLOFQ
@@ -379,7 +380,7 @@ However, the move to Kubernetes mostly obfuscated the need for Spring Cloud capa
 
 *Abstract* :
 
-idées à développer dans l'abstract : 
+idées à développer dans l'abstract :
 
 * environnement technique complexe
 * donc on utilise des frameworks pour se simplifier la vie
@@ -395,7 +396,7 @@ Mais est-il seul roi en son domaine, ou existe-t-il des alternatives ?
 Créé fin 2016 sur base de Java EE 7, le projet **Eclipse MicroProfile** a justement pour objectif d'optimiser la plateforme Java EE pour les architectures microservices.
 Pourra-t-il concurrencer l'hégémonie du premier ?
 
-Durant cette université, **nous comparerons les forces et faiblesses** de ces 2 plateformes via le **développement simultané, pour chacune d'elles, d'une même application**.  
+Durant cette université, **nous comparerons les forces et faiblesses** de ces 2 plateformes via le **développement simultané, pour chacune d'elles, d'une même application**.
 Vous pourrez ainsi, en toute connaissance de cause, choisir de rester sur votre Spring, ou au contraire basculer sur le nouveau MicroProfile 😉
 ----
 
@@ -406,19 +407,19 @@ Bonjour,
 
 Le but de cette université est de **comparer les possibilités des frameworks Spring et MicroProfile pour le développement de microservices**, et leurs facilités d'intégration avec les outils du marché (Netflix OSS, stack Hashicorp avec Consul & Co, mais aussi l'omniprésent Istio du moment, etc.) assurant la qualité de service requise par les applications cloud-native (service discovery, load balancing, gestion des erreur, configuration centralisée, etc.).
 
-On ne va pas se mentir, actuellement, pour le déploiement de microservices, Spring est de loin la stack la plus connue et utilisée.  
+On ne va pas se mentir, actuellement, pour le déploiement de microservices, Spring est de loin la stack la plus connue et utilisée.
 Or justement, nous voudrions justement montrer qu'elle n'est pas la seule, et que l'on peut **faire de belles choses avec notre "bon vieux" Java Enterprise**, ici avec MicroProfile 😉
 
 Au final, nous voulons qu'en sortant de l'université, les participants sachent qu'elles sont les forces et faiblesses de chaque stack, et s'ils doivent en choisir eux-mêmes une à l'avenir, ne se contente plus d'un "Spring par défaut".
 
-Côté speakers, Darren et moi faisons partie du **JUG Interne de Softeam depuis des années**.  
-Pour une petite idée de notre activité, voir [les CR de nos réunions mensuelles sur GitHub](https://github.com/softeamfr/startech-meetings-reports).  
-Nous sommes tous deux des devs seniors avec plus de 12 et 15 ans d'expérience, et plusieurs années d'architecture derrière nous.  
+Côté speakers, Darren et moi faisons partie du **JUG Interne de Softeam depuis des années**.
+Pour une petite idée de notre activité, voir [les CR de nos réunions mensuelles sur GitHub](https://github.com/softeamfr/startech-meetings-reports).
+Nous sommes tous deux des devs seniors avec plus de 12 et 15 ans d'expérience, et plusieurs années d'architecture derrière nous.
 Via notre activité au JUG (voir [cette présentation](https://ardemius.github.io/slides-startech/slides-starTECH.html) pour plus de détails sur celle-ci) nous avons déjà donné de nombreuses formations aux développeurs de la société, sur des sujets variés (*Java core*, *Lambdas*, *optimisation*, *Spring*, *Git*, *TDD*, *AsciiDoctor*, etc.), nous avons donc l'habitude de prendre la parole en public.
 
-Darren a été **enseignante en université pendant 6 ans** sur UML, ainsi qu'en développement web en Java / Java EE.  
-De mon côté, **j'ai déjà été speaker à Devoxx France en 2017**, avec le sujet ["Sorcellerie en Java : outrepasser les interdits avec sun.misc.Unsafe"](https://cfp.devoxx.fr/2017/talk/FEU-0240/Sorcellerie_en_Java_:_outrepasser_les_interdits_avec_sun.misc.Unsafe.html) ([YouTube](https://youtu.be/FytJ4OdGYPM)), avec lequel j'avais également gagné le Young Blood du Paris JUG la même année ([YouTube](https://youtu.be/mPvhzKLb9K0))  
-Je fais également parti du pôle formation de Softeam, tout particulièrement concernant Git.  
+Darren a été **enseignante en université pendant 6 ans** sur UML, ainsi qu'en développement web en Java / Java EE.
+De mon côté, **j'ai déjà été speaker à Devoxx France en 2017**, avec le sujet ["Sorcellerie en Java : outrepasser les interdits avec sun.misc.Unsafe"](https://cfp.devoxx.fr/2017/talk/FEU-0240/Sorcellerie_en_Java_:_outrepasser_les_interdits_avec_sun.misc.Unsafe.html) ([YouTube](https://youtu.be/FytJ4OdGYPM)), avec lequel j'avais également gagné le Young Blood du Paris JUG la même année ([YouTube](https://youtu.be/mPvhzKLb9K0))
+Je fais également parti du pôle formation de Softeam, tout particulièrement concernant Git.
 Une bonne partie de mon activité et ma veille est visible sur mes repo GitHub : [https://github.com/Ardemius](https://github.com/Ardemius)
 ----
 
@@ -448,17 +449,17 @@ For microservices, keep in mind : Small, Simple and Decoupled Services = Scalabl
 Pour l'émergence des microservices, voir l'excellent https://hub.packtpub.com/capability-model-microservices/ "What are microservices"
 
 ----
-Microservices are not invented. 
-Many organizations, such as Netflix, Amazon, and eBay, successfully used the divide-and-conquer technique TO FUNCTIONALLY PARTITION THEIR MONOLITHIC APPLICATIONS INTO SMALLER ATOMIC UNITS, and each performs a single function. These organizations solved a number of prevailing issues they experienced with their monolithic application. 
-Following the success of these organizations, many other organizations started adopting this as a common pattern to refactor their monolithic applications. 
+Microservices are not invented.
+Many organizations, such as Netflix, Amazon, and eBay, successfully used the divide-and-conquer technique TO FUNCTIONALLY PARTITION THEIR MONOLITHIC APPLICATIONS INTO SMALLER ATOMIC UNITS, and each performs a single function. These organizations solved a number of prevailing issues they experienced with their monolithic application.
+Following the success of these organizations, many other organizations started adopting this as a common pattern to refactor their monolithic applications.
 Later, evangelists termed this pattern microservices architecture.
 ----
 
--> l1 p13 : 
+-> l1 p13 :
 
 ----
-We’re at an inflection point in history. Almost all aspects of modern society are now wired together via the internet. 
-Companies that used to serve local markets are suddenly finding that they can reach out to a global customer base. However, with a larger global customer base also comes global competition. 
+We’re at an inflection point in history. Almost all aspects of modern society are now wired together via the internet.
+Companies that used to serve local markets are suddenly finding that they can reach out to a global customer base. However, with a larger global customer base also comes global competition.
 ----
 
 Et pour une définition, l1 p2 : *a microservice is a small, loosely coupled, distributed service*
@@ -501,12 +502,12 @@ https://www.youtube.com/watch?v=sIlQ5iYeqIE à partir de 02:15, et voir égaleme
 
 NOTE: concernant l'API gateway (ou service gateway), bien voir la note l1 p156 sur leur conception, afin d'éviter qu'ils ne deviennent des bottlenecks
 
-* Load Balancer : as soon as multiple instances are running	
+* Load Balancer : as soon as multiple instances are running
 
 * API Gateway : le point d'entrée unique pour tous les services, permet également d'implémenter plusieurs fonctionnalités transverses, dont les static et dynamic routing
 
 * Asynchronous messaging : pour tout ce qui est communication Event Driven (RabbitMQ, Kafka). Permet d’améliorer le découplage des microservices. +
-Attention toutefois, on peut devenir dépendant (donc re-couplage) de la version du type de message. Ex: JSON ne supporte pas nativement le versioning, contrairement à Avro (poussé par Kafka) 
+Attention toutefois, on peut devenir dépendant (donc re-couplage) de la version du type de message. Ex: JSON ne supporte pas nativement le versioning, contrairement à Avro (poussé par Kafka)
 
 * Immutable infrastructure l1 p25 (et §10) : "once a service is deployed, the infrastructure it's running on is never touched again by human hands"
 * Infrastructure as code l1 p25 (et §10) +
@@ -519,7 +520,7 @@ Par opposition aux servers "longue durée" (snowflake servers), voir https://www
 
 l1 p19 - 20 : les principales caractéristiques
 
-Bien parler de la *communication entre microservices* : 
+Bien parler de la *communication entre microservices* :
 
 * synchrone : tight coupling, REST calls
 * *asynchrone* : Rabbit / Kafka, loose coupling +
@@ -549,7 +550,7 @@ Cf l1 p28 et p34 : définition de Spring Boot et Cloud
 * Création de Spring Boot en avril 2014 (Spring Boot 1.0.0.release - https://mvnrepository.com/artifact/org.springframework.boot/spring-boot/1.0.0.RELEASE)
 	** Actuellement (2019/04) en 2.1.4
 * Création de Spring Cloud en mars 2015 (Spring Cloud 1.0.0, pre-Angel version)
-	** Pour le release train, voir 
+	** Pour le release train, voir
 	Spring Cloud Greenwich -> Spring Boot 2.1.x
 	Spring Cloud Finchley  -> Spring Boot 2.0.x
 
@@ -577,7 +578,7 @@ Parler de Thorntail (anciennement Wildfly Swarm), Open Liberty, Payara, TomEE et
 
 Parler de *"Just enough Application Server"*
 Historiquement, un application server c'était *"one size fits all"* (l2 p41)
-l2 p38 : 
+l2 p38 :
 "In a nutshell, JeAS *inverts* the relationship between an application server and an application, ensuring that *you package only the parts of an application server that your application requires*"
 -> On peut en final créer un Uber jar avec MicroProfile "complet" (je rappelle que toutes ses spécifications sont dédiées au Microservices), OU seulement avec certaines de ses briques ("fractions" comme les nomme Thorntail), comme MicroProfile OpenTracing
 
@@ -662,7 +663,7 @@ Bonne ressources à exploiter : https://developers.redhat.com/blog/2018/11/21/ec
 * IL VA FALLOIR UN PETIT DIAGRAMME DE CLASSE (diagramme d'archi) DE LA DEMO
 * et lister les techno utilisées pour chaque stack
 
-* Bien découper la démo, élément (classe) par élément dont on présentera l'implémentation successivement, en comparant systématiquement les stacks Spring et MicroProfile 
+* Bien découper la démo, élément (classe) par élément dont on présentera l'implémentation successivement, en comparant systématiquement les stacks Spring et MicroProfile
 	** trouver un moyen simple d'afficher à l'écran, pour un même élément, les codes Spring et MicroProfile (via l'IDE ? 2 workspaces / projects en parallèle ?)
 	** voir si on intègre un peu de code dans les slides
 
@@ -764,7 +765,7 @@ Les tutoriaux sont bons dans les 2 cas
 
 == Dans l'absolu
 
-* Plutôt vers le début, on pourrait parler un peu de la *décomposition du problème métier*, et donc du DDD 
+* Plutôt vers le début, on pourrait parler un peu de la *décomposition du problème métier*, et donc du DDD
 
 * "Comme son titre l'annonce, cette présentation a pour but de comparer les stacks Spring, avec Boot et Cloud, et MicroProfile pour le développement d'une application basée sur une architecture microservices +
 Donc, avant d'aller plus loin, commençons par rappelez ce qu'on entend exactement par architecture microservices."
@@ -777,7 +778,7 @@ Donc, avant d'aller plus loin, commençons par rappelez ce qu'on entend exacteme
 
 0. présentation des speakers
 1. rapide définition de ce qu'est un microservice et un peu d'histoire
-	** un rien d'histoire : 
+	** un rien d'histoire :
 		**** *monolith (single unit) -> SOA (coarse-grained) -> microservices (fine-grained)* +
 		Pour un bon schéma de cette évolution, partir de ce schéma : https://www.researchgate.net/figure/Evolution-from-monolithic-applications-to-microservices-based-systems_fig1_327758387, et préciser la partie SOA en faisant apparaître l'ESB comme indiqué ici : https://www.capgemini.com/2016/06/microservices-in-cloud-based-infrastructure-paving-the-way-to-the/ +
 		Ce schéma propose une autre version de l'ESB : https://1904labs.com/work/case-studies/breaking-monoliths/ (*Smart endpoints and Dumb pipes* pour "dumb messaging system" pour les microservices, par opposition à la complexité métier de l'ESB, voir l'article original de *Martin Fowler* : https://martinfowler.com/articles/microservices.html#SmartEndpointsAndDumbPipes) +
@@ -789,7 +790,7 @@ Donc, avant d'aller plus loin, commençons par rappelez ce qu'on entend exacteme
 		**** migration from monolith : le use case d'origine (2010s, plutôt 2014 cf Google Trends pour l'apparition du terme microservices)
 		**** cloud native app
 2. le "core" des microservices
-	** principaux concepts : REST et communication en JSON -> en gros, redonner une définition "technique" des microservices "seul dans leur coin" 
+	** principaux concepts : REST et communication en JSON -> en gros, redonner une définition "technique" des microservices "seul dans leur coin"
 3. puis tout l'environnement qui gravite autour. On va y distinguer : +
 -> pour chaque feature, max 1 à 2 lignes d'explication
 	** API Gateway
@@ -805,7 +806,7 @@ Donc, avant d'aller plus loin, commençons par rappelez ce qu'on entend exacteme
 -> bien faire une présentation *AGNOSTIQUE à la techno* à ce niveau. +
 Faire un schéma global sur le modèle de celui de Susanne KAISER lors du Voxxed Days microservices 2018 (du début jusqu'à 05:25)
 
-ON PLACE LES 15 20 min de pause ICI ! 
+ON PLACE LES 15 20 min de pause ICI !
 
 4. Les forces en présence pour le passage à la pratique ! +
 -> on ne va PAS pouvoir TOUT tester, ni parler de tout (il n'y aura PAS de DDD, CQRS ou ES ici), mais on va essayer de montrer comment le "core" est réalisé pour chaque stack, quelle est un peu "sa philosophie", et COMMENT ELLE S'ADAPTE / PERMET LA MISE EN PLACE DU CAPABILITY MODEL
@@ -818,7 +819,7 @@ ON PLACE LES 15 20 min de pause ICI !
 		**** l'historique : Netflix OSS
 		**** La stack Hashicorp
 		**** les nouveaux qui grandissent vite (cf l'autre présentation au même Devoxx par exemple)
-	** Présentation exhaustive des technos AVEC LES VERSIONS que nous avons choisies pour les 2 stacks 
+	** Présentation exhaustive des technos AVEC LES VERSIONS que nous avons choisies pour les 2 stacks
 		**** Spring
 		**** MicroProfile
 			****** JAX-RS
