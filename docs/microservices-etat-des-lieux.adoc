@@ -19,7 +19,7 @@ endif::[]
 :sb: pass:[<br>]
 // check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
 :toc: macro
-:toclevels: 2
+:toclevels: 3
 // To turn off figure caption labels and numbers
 :figure-caption!:
 
@@ -282,6 +282,8 @@ Les plus connues sont *Spring* et *MicroProfile*.
 
 === Stack Spring
 
+image::microservices-etat-des-lieux_06.jpg[align="center"]
+
 Au sein de l'écosystème Spring, les projets Boot et Cloud sont ceux permettant d'implémenter des microservices.
 
 ==== Spring Boot
@@ -307,8 +309,41 @@ Parmi les projets composant Spring Cloud, on peut citer :
 * *Spring Cloud Stream* : framework facilitant l’intégration de brokers de message (RabbitMQ, Kafka) pour la communication asynchrone.
 * et https://spring.io/projects/spring-cloud[bien d'autres encore]
 
+=== Stack Eclipse MicroProfile
 
+image::microservices-etat-des-lieux_07.jpg[align="center"]
 
+==== Pourquoi la création de MicroProfile ?
 
+MicroProfile s'appuie sur des spécifications venant de *JEE* (JEE 7 pour les premières versions).
+
+A priori, parlez de JEE ces dernières années pour le développement de microservices semble être synonyme de se tirer une balle dans le pied... +
+Après tout, *JEE est une spécification pour des serveurs d'application dédiés à des applications monolithiques*, et l'on a Spring Boot et Cloud sous la main qui sont spécialement conçus pour ce type de développement. +
+JEE, avec toutes les JSRs de la plateforme complète, semble trop "lourd" pour les microservices :
+
+image::microservices-etat-des-lieux_08.jpg[align="center"]
+
+Fort de ce constat, voyant que Java EE n'arrivait plus à évoluer assez vite face aux changements de l'industrie, et conscients des investissement déjà réalisés dans la technologie, plusieurs entreprises et éditeurs de logiciel (Red Hat, IBM, Tomitribe, Payara), soutenus par la communauté Java, ont décidé de créer *MicroProfile*, une *plateforme optimisée pour l'architecture microservices*, basée sur JEE.
+
+==== Just Enough Application Server (JeAS)
+
+"Just Enough Application Server"... Le nom seul du concept est éloquent.
+
+Historiquement, un serveur d'application, c'était *"one size fits all"*. On n'avait pas le choix, notre application devait tourner sur un serveur incluant toutes les JSRs de la plateforme JEE. +
+Mais le principe de *JeAS* est justement d'*inverser la relation entre le serveur d'application et l'application*, vous permettant de ne packager que les fonctionnalités du server d'application requises par votre application.
+
+image::microservices-etat-des-lieux_09.jpg[align="center"]
+
+Les avantages de cette approche sont les suivants :
+
+* *Réduction de la taille de l'application* : comparée à la somme d'une application classique PLUS le serveur d'application
+* *Réduction de la mémoire allouée* : va dépendre du nombre de classes qui n'auront plus besoin d'être chargées
+* *Réduction de la surface d'attaque* : moins de ports d'ouverts, moins de services qui tournent
+* *Meilleure séparation entre les applications* : comparé à un serveur d'application dans lequel on avait généralement plusieurs applications de déployées
+* *Mises à jour simplifiées* : la mise à jour ne concerne plus qu'UNE application
+
+Vu comme cela, le principe semble plutôt simple, et avoir beaucoup d'avantage, alors... *Mais pourquoi ne pas avoir fait cela avant ?!* +
+-> Tout simplement parce qu'à l'époque, *le coût du matériel était bien plus élevé qu'aujourd'hui*. Mieux valait donc minimiser le nombre de machines. +
+De nos jours, avec *l’avènement des VM et des containers*, le constat n'est plus le même.
 
 
