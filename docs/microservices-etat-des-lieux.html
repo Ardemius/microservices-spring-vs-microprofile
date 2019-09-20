@@ -490,6 +490,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_stack_eclipse_microprofile">Stack Eclipse MicroProfile</a></li>
 </ul>
 </li>
+<li><a href="#_se_faciliter_les_tests_consumer_driven_contracts">Se faciliter les tests : Consumer Driven Contracts</a></li>
 </ul>
 </div>
 <div class="admonitionblock note">
@@ -1238,11 +1239,89 @@ MicroProfile était là pour <strong>redonner une dynamique</strong> (3 releases
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_se_faciliter_les_tests_consumer_driven_contracts">Se faciliter les tests : Consumer Driven Contracts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Comme déjà vu précédemment, une architecture microservices implique rapidement un grand nombre de microservices.<br>
+Dès lors, la <strong>problématique des tests d&#8217;intégration</strong> et au-delà, à savoir tous les tests impliquant une communication des microservices entre eux, devient (très) <strong>complexe</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Nos tests vont invoquer des microservices, qui vont eux-mêmes en invoquer d&#8217;autres, qui pourront en invoquer d&#8217;autres, et ainsi de suite.</p>
+</li>
+<li>
+<p>Il faudra lancer au préalable tous les microservices impliqués dans nos tests.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>En conséquence, nos tests vont :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>être lents</p>
+</li>
+<li>
+<p>être fragiles, car directement dépendants de la bonne exécution d&#8217;autres microservices</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ce constat est à la base du pattern dit du <strong><em>Consumer Driven Contracts</em></strong> (CDC).</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./images/microservices-etat-des-lieux_11.jpg" alt="microservices etat des lieux 11">
+</div>
+</div>
+<div class="paragraph">
+<p>Grâce à ce dernier, on va pouvoir réaliser des tests plus simples, mais tout aussi corrects, grâce aux <strong>contrats</strong> passés entre consommateurs et producteurs :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Plus simples</strong> car utiisant des <strong>mocks</strong> &#8594; plus besoin de communication REMOTE avec le "vrai" provider, ou possibilité de coder le producteur sans que les clients existent encore.</p>
+</li>
+<li>
+<p><strong>Tout aussi corrects</strong> du fait de la <strong>garantie apportée par le contrat</strong>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Les contrats sont générés <strong>automatiquement</strong>, à partir des tests des consommateurs, ou de la documentation, mais peuvent aussi être écrits à la main.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./images/microservices-etat-des-lieux_12.jpg" alt="microservices etat des lieux 12" width="800">
+</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./images/microservices-etat-des-lieux_13.jpg" alt="microservices etat des lieux 13" width="800">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Côté solution permettant la mise en place du CDC, vous pouvez regarder du côté de <a href="https://spring.io/projects/spring-cloud-contract">Spring Cloud Contract</a>, un autre projet "Umbrella" de Spring Cloud (regroupe plusieurs outils facilitant la mise en place du CDC)
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0<br>
-Last updated 2019-09-17 23:30:21 UTC
+Last updated 2019-09-20 23:08:10 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">

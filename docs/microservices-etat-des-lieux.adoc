@@ -386,6 +386,44 @@ Le 11/04/2019, Ken Finnigan, co-fondateur et leader de RedHat Thorntail a annonc
 Les livraisons de Thorntail 2.x seront poursuivies pendant 18 mois, pendant lesquels ses utilisateurs seront incités à passer sur WildFly ou Quarkus.
 ====
 
+== Se faciliter les tests : Consumer Driven Contracts
+
+Comme déjà vu précédemment, une architecture microservices implique rapidement un grand nombre de microservices. +
+Dès lors, la *problématique des tests d'intégration* et au-delà, à savoir tous les tests impliquant une communication des microservices entre eux, devient (très) *complexe* :
+
+* Nos tests vont invoquer des microservices, qui vont eux-mêmes en invoquer d'autres, qui pourront en invoquer d'autres, et ainsi de suite.
+* Il faudra lancer au préalable tous les microservices impliqués dans nos tests.
+
+En conséquence, nos tests vont :
+
+* être lents
+* être fragiles, car directement dépendants de la bonne exécution d'autres microservices
+
+Ce constat est à la base du pattern dit du *_Consumer Driven Contracts_* (CDC).
+
+image::microservices-etat-des-lieux_11.jpg[align="center"]
+
+Grâce à ce dernier, on va pouvoir réaliser des tests plus simples, mais tout aussi corrects, grâce aux *contrats* passés entre consommateurs et producteurs :
+
+* *Plus simples* car utiisant des *mocks* -> plus besoin de communication REMOTE avec le "vrai" provider, ou possibilité de coder le producteur sans que les clients existent encore.
+* *Tout aussi corrects* du fait de la *garantie apportée par le contrat*.
+
+Les contrats sont générés *automatiquement*, à partir des tests des consommateurs, ou de la documentation, mais peuvent aussi être écrits à la main.
+
+image::microservices-etat-des-lieux_12.jpg[align="center", width=800]
+
+image::microservices-etat-des-lieux_13.jpg[align="center", width=800]
+
+NOTE: Côté solution permettant la mise en place du CDC, vous pouvez regarder du côté de https://spring.io/projects/spring-cloud-contract[Spring Cloud Contract], un autre projet "Umbrella" de Spring Cloud (regroupe plusieurs outils facilitant la mise en place du CDC)
+
+
+
+
+
+
+
+
+
 
 
 
