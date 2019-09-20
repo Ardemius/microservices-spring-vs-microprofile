@@ -491,6 +491,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#_se_faciliter_les_tests_consumer_driven_contracts">Se faciliter les tests : Consumer Driven Contracts</a></li>
+<li><a href="#_cartographie_des_outils_du_capability_model">Cartographie des outils du capability model</a></li>
 </ul>
 </div>
 <div class="admonitionblock note">
@@ -1317,11 +1318,73 @@ Côté solution permettant la mise en place du CDC, vous pouvez regarder du côt
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_cartographie_des_outils_du_capability_model">Cartographie des outils du capability model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cette section est juste une présentation d&#8217;un outil que j&#8217;adore : le <a href="https://landscape.cncf.io/">Cloud Native Interactive Landscape</a> (<a href="https://landscape.cncf.io/" class="bare">https://landscape.cncf.io/</a>) de la CNCF (Cloud Native Computing Foundation).</p>
+</div>
+<div class="paragraph">
+<p>Il s&#8217;agit ni plus ni moins que d&#8217;une <strong>cartographie dynamique</strong> (vous pouvez en changez le contenu affiché à l&#8217;aide d&#8217;un jeu de filtres) des différents éléments / outils composant une <strong>application Cloud Native</strong>.<br>
+Et comme nous avons vu précédemment que les microservices sont devenus l&#8217;architecture par défaut pour bâtir des applications Cloud-Native, à l&#8217;aide de la cartographie précédente, nous disposons d&#8217;un <strong>moyen très pratique de lister un grand nombre d&#8217;outils du capability model</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Si par exemple je choisis <em>Coordination &amp; Service Discovery</em> à partir du landscape non filtré, les éléments suivants me sont retournés :</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./images/microservices-etat-des-lieux_14.jpg" alt="microservices etat des lieux 14" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Tout simplement génial, non ? 😉</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Conseil 1 : faites attention aux catégories !</div>
+<div class="paragraph">
+<p>Dans l&#8217;exemple précédent, certains diront sûrement : "Hein ?! Y a pas Consul dans les outils de service discovery ?!!"<br>
+Eh bien! non&#8230;&#8203; 😛</p>
+</div>
+<div class="paragraph">
+<p>La raison est toute simple, Consul a tout simplement été rangé dans une autre catégorie.<br>
+En l&#8217;occurence, celle des <em>service mesh</em>.</p>
+</div>
+<div class="paragraph">
+<p>Il faut bien se dire que certains outils remplissant plusieurs fonctions, les classer par catégorie devient rapidement compliqué et subjectif.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Conseil 2 : prenez votre temps !</div>
+<div class="paragraph">
+<p>La cartographie étant volumineuse, il y a souvent de la latence dans son utilisation.<br>
+Un conseil : laissez au site quelques secondes après un choix de filtres pour qu&#8217;il rafraîchisse son affichage tranquillement 😉</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0<br>
-Last updated 2019-09-20 23:08:10 UTC
+Last updated 2019-09-20 23:46:42 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">

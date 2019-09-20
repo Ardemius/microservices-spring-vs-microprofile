@@ -416,8 +416,37 @@ image::microservices-etat-des-lieux_13.jpg[align="center", width=800]
 
 NOTE: Côté solution permettant la mise en place du CDC, vous pouvez regarder du côté de https://spring.io/projects/spring-cloud-contract[Spring Cloud Contract], un autre projet "Umbrella" de Spring Cloud (regroupe plusieurs outils facilitant la mise en place du CDC)
 
+== Cartographie des outils du capability model
 
+Cette section est juste une présentation d'un outil que j'adore : le https://landscape.cncf.io/[Cloud Native Interactive Landscape] (https://landscape.cncf.io/) de la CNCF (Cloud Native Computing Foundation).
 
+Il s'agit ni plus ni moins que d'une *cartographie dynamique* (vous pouvez en changez le contenu affiché à l'aide d'un jeu de filtres) des différents éléments / outils composant une *application Cloud Native*. +
+Et comme nous avons vu précédemment que les microservices sont devenus l'architecture par défaut pour bâtir des applications Cloud-Native, à l'aide de la cartographie précédente, nous disposons d'un *moyen très pratique de lister un grand nombre d'outils du capability model*.
+
+Si par exemple je choisis _Coordination & Service Discovery_ à partir du landscape non filtré, les éléments suivants me sont retournés :
+
+image::microservices-etat-des-lieux_14.jpg[align="center", width=800]
+
+Tout simplement génial, non ? 😉
+
+.Conseil 1 : faites attention aux catégories !
+[NOTE]
+====
+Dans l'exemple précédent, certains diront sûrement : "Hein ?! Y a pas Consul dans les outils de service discovery ?!!" +
+Eh bien! non... 😛
+
+La raison est toute simple, Consul a tout simplement été rangé dans une autre catégorie. +
+En l'occurence, celle des _service mesh_.
+
+Il faut bien se dire que certains outils remplissant plusieurs fonctions, les classer par catégorie devient rapidement compliqué et subjectif.
+====
+
+.Conseil 2 : prenez votre temps !
+[NOTE]
+====
+La cartographie étant volumineuse, il y a souvent de la latence dans son utilisation. +
+Un conseil : laissez au site quelques secondes après un choix de filtres pour qu'il rafraîchisse son affichage tranquillement 😉
+====
 
 
 
