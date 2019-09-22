@@ -21,7 +21,11 @@ endif::[]
 :toc: macro
 :toclevels: 2
 // To turn off figure caption labels and numbers
-:figure-caption!:
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
 
 toc::[]
 
