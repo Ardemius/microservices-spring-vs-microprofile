@@ -344,6 +344,14 @@ Concernant Istio, le side car *Envoy* réalise les fonctionnalités suivantes :
 * Health checks
 * Fault injection
 
+Concernant la notion de sidecar proxy, voir ce site, https://istio.io/docs/concepts/what-is-istio/, section "why use Istio?" :
+
+----
+You add Istio support to services by deploying a special sidecar proxy throughout your environment that intercepts all network communication between microservices, then configure and manage Istio using its control plane functionality, which includes
+----
+
+Voir également cette définition de ce qu'est un sidecar proxy : https://www.lemagit.fr/definition/Proxy-side-car
+
 ==== Kubernetes as a replacement for service registry, discovery and load balancing instead of Netflix OSS
 
 Cette tendance se confirme de plus en plus, bien aidée par l'avènement de l'industrialisation des containers.

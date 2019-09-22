@@ -425,7 +425,7 @@ Et comme nous avons vu précédemment que les microservices sont devenus l'archi
 
 Si par exemple je choisis _Coordination & Service Discovery_ à partir du landscape non filtré, les éléments suivants me sont retournés :
 
-image::microservices-etat-des-lieux_14.jpg[align="center", width=800]
+image::microservices-etat-des-lieux_14.jpg[align="center"]
 
 Tout simplement génial, non ? 😉
 
@@ -448,13 +448,62 @@ La cartographie étant volumineuse, il y a souvent de la latence dans son utilis
 Un conseil : laissez au site quelques secondes après un choix de filtres pour qu'il rafraîchisse son affichage tranquillement 😉
 ====
 
+== Kubernetes et Istio, l'avenir des microservices ?
 
+Pour le moment, avec les stacks Spring et MicroProfile, on pourrait dire que l'on a vu la façon "classique" d'implémenter des microservices : on commence par coder nos services, puis on ajoute progressivement à notre code les appels vers les éléments du capability model.
 
+Tout bien pesé, ces éléments du capability model ne sont finalement que de la "plomberie" nécessaire à notre architecture microservices, le code "métier" se trouvant lui au niveau du "core" de nos microservices. +
+Aussi, avec cette façon de faire "classique", nous mélangeons, nous couplons, notre métier avec notre plomberie. +
+Ne pourrait-on pas faire autrement ?
 
+C'est ce que propose l’écosystème *Kubernetes* via son *service mesh Istio*.
 
+image::microservices-etat-des-lieux_15.jpg[align="center"]
 
+.Qu'est-ce qu'un service mesh ?
+[NOTE]
+====
+Un service mesh est une *infrastructure décentralisée, distribuée*, entre vos services, qui rend la communication entre eux plus *stable* et plus *fiable*.
 
+Le service mesh n’est bien sûr valable que pour des applications Cloud-Native, ici impliquant Kubernetes comme orchestrateur.
+====
 
+Le principe est le suivant : +
+*Kubernetes*, en tant qu'orchestrateur, est responsable de l'instanciation des containers. +
+En architecture microservices, la pratique est d'avoir 1 container par microservice. +
+En conséquence, Kubernetes va également devenir *"l'orchestrateur de vos microservices"* : c'est lui qui va les instancier. +
+Il est donc idéalement placé pour *ajouter* à ces derniers *un ensemble de fonctionnalités* en améliorant la fiabilité, le support, la maintenance... Vous l'avez compris, il s'agit des fonctionnalités du capability model.
 
+Pour ajouter ces différentes fonctionnalités, *Kubernetes* va se reposer sur le *service mesh Istio*. +
+On ajoute le support d'Istio aux microservices en déployant, pour chacun d'eux, un *sidecar proxy* qui va intercepter toutes les communications entre eux. +
+Tous ces sidecar proxy sont rattachés à Istio, qui va pouvoir les configurer et les gérer, afin qu'ils puissent ajouter à leur service associé, les fonctionnalités souhaitées disponibles dans Istio (service discovery, load balancing, règle de routage, gestion des erreurs, authentification / identification, etc.).
+
+Au final, [red]*nous avons déplacé toutes les préoccupations de communication des applications en dehors du domaine métier*, dans un sidecar proxy.
+
+=== Tout n'est qu'un éternel recommencement ?
+
+Reprenons la conclusion précédente : _"nous avons déplacé toutes les préoccupations de communication des applications en dehors du domaine métier"_ +
+
+Nous avons donc séparé "le métier" de tout le côté "plomberie". +
+Plomberie facilitée par le couple Kubernetes / Istio qui décharge grandement le développeur de sa gestion.
+
+-> [red]*Nous avons permis au développeur de se concentrer quasi uniquement sur le métier*.
+
+Mais, ceci n'était-il pas déjà *la promesse avancée par... JEE* (Java Enterprise Edition) ? +
+Le développeur s'occupe du code métier, et le *serveur d'application* s'occupe de toute la plomberie.
+
+Ce serveur d'application "honni", synonyme de "vieilles" applications monolithiques, avec toutes ses JSRs embarquées... Ne sommes-nous pas en train de le remplacer par une version plus flexible et distribuée (Kubernetes / Istio), mais, finalement, dans les services rendus, pas si éloignée ? +
+Au final, on pourrait voir Kubernetes / Istio comme une simple "mise au goût du jour" d'un concept vieux de 20 ans 😉
+
+== Conclusion
+
+Au travers de cet article, nous avons pu voir d'où provenaient les microservices, quels étaient les nouveaux besoins, et les nouvelles solutions ayant conduit à leur création.
+
+Nous avons également montré que la complexité des microservices venait, non pas du code des services eux-mêmes, mais de la mise en place de l'environnement technique associé (capability model).
+
+Plusieurs stack techniques existent pour mettre en place ce dernier, Spring et MicroProfile étant les plus connues. +
+Néanmoins, l'arrivée de Kubernetes / Istio, avec les avantages proposés par son usage du sidecar proxy, va peut-être d'ici peu changer ce constat (si ce n'est déjà fait).
+
+Le clin d'oeil de fin vient de notre bon vieux serveur d'application, que certains disent déjà mort et enterré, mais vis à vis duquel Kubernetes / Istio pourrait finalement être vu comme une simple évolution 😉
 
 
