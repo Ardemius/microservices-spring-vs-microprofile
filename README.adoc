@@ -1,3 +1,20 @@
 = Microservices : Infinity War ! Spring vs MicroProfile
 
-Talk présenté à Devoxx France 2019 (Université, 3h)
+Talk présenté à *Devoxx France 2019* (Université, 3h), avec ma collègue https://github.com/darrenboutros[Darren Boutros]. +
+Nous sommes tous deux membres du *JUG de Softeam* (le https://ardemius.github.io/slides-startech/slides-starTECH.html[StarTECH Java] 😃)
+
+La *vidéo* est disponible https://www.youtube.com/watch?v=2VH8rQSKdk0&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[ici] (chaîne YouTube de Devoxx France), et les *slides* link:resources/Microservices%20_%20Spring%20vs%20MicroProfile.pptx[là] (répertoire "resources" du présent repo).
+
+NOTE: J'ai également écrit un https://ardemius.github.io/microservices-spring-vs-microprofile/microservices-etat-des-lieux.html[*article*] reprenant le contenu de la présentation, accessible via les https://ardemius.github.io/microservices-spring-vs-microprofile/microservices-etat-des-lieux.html[GitHub pages du repo].
+
+Abstract :
+
+____
+En ce début 2019, et avec maintenant quelques années de recul (et quelques crises de nerf ?) sur le sujet, tout le monde s'accorde à dire que l'environnement technique nécessaire à la mise en place de microservices est complexe : API gateway, service discovery et registry, design for failures et circuit breaker, gestion de la sécurité via OAuth et OpenID Connect, et j'en passe...
+
+Le framework Spring, plus particulièrement les projets Boot et Cloud, a permis à bien des développeurs de préserver (une partie de ? 😉 ) leurs cheveux en facilitant cette mise en place. Mais est-il seul roi en son domaine, ou existe-t-il des alternatives ? Créé fin 2016 sur base de Java EE 7, le projet Eclipse MicroProfile a justement pour objectif d'optimiser la plateforme Java EE pour les architectures microservices. Pourra-t-il concurrencer l'hégémonie du premier ?
+
+Durant cette université, nous comparerons les forces et faiblesses de ces 2 plateformes via le développement simultané, pour chacune d'elles, d'une même application.
+Vous pourrez ainsi, en toute connaissance de cause, choisir de rester sur votre Spring, ou au contraire basculer sur le nouveau MicroProfile 😉
+____
+
